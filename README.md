@@ -1,3 +1,5 @@
+<img width="1281" height="832" alt="Gemini_Generated_Image_4zbi874zbi874zbi" src="https://github.com/user-attachments/assets/56ab7e99-1b78-4404-a8b4-b0086c06f3a4" />
+
 # 🤖 TrustBoost AI | B2B Data Sanitization API
 
 High-performance PII removal and cleaning for AI datasets. Secure, fast, and optimized for the Machine-to-Machine (M2M) economy.
