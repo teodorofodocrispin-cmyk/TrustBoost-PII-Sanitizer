@@ -1,34 +1,34 @@
-<img width="1281" height="832" alt="Gemini_Generated_Image_4zbi874zbi874zbi" src="https://github.com/user-attachments/assets/56ab7e99-1b78-4404-a8b4-b0086c06f3a4" />
+<img width="1024" height="665" alt="image" src="https://github.com/user-attachments/assets/914a7d71-65ce-4086-9195-4be2302745be" />
+🛡️ TrustBoost PII Sanitizer
+The Zero-Knowledge Privacy Layer for AI Agents & LLMs
+TrustBoost is a high-performance M2M middleware. Your data is only processed after a verified on-chain payment. No manual intervention. No centralized middleman.
 
-# 🤖 TrustBoost AI | B2B Data Sanitization API
+🛂 The Customs Protocol (Autonomous Access)
+This system operates with a Trustless Customs Gate. Before any data is sanitized, our AI-Node verifies the Solana Network for a valid transaction signature (TX Hash).
 
-High-performance PII removal and cleaning for AI datasets. Secure, fast, and optimized for the Machine-to-Machine (M2M) economy.
+How to Access:
+Send Payment: Exactly 149 USDC (Solana Network) to:
+giu4VciTkfWJNG1oeP6SzHEJwmabikJSMB91GaFNWE4
 
-## 💰 Rate & Network
-* **Rate:** 50 USDC per 1,000 rows (Batch processing).
-* **Network:** Solana (SPL Token).
-* **Settlement:** Instant on-chain verification.
+Submit TX Hash: Include your Transaction Signature (TX Hash) in the header of your first API call.
 
-## 🚀 How to use (Quick Start)
+Automatic Clearance: Our Helius-powered node validates the payment on the ledger in real-time. If the hash is valid and the amount is correct, the "Gate" opens and your data is processed.
 
-1. **Send 50 USDC** to our Treasury Wallet:
-   `giu4VciTkfWJNG1oeP6SzHEJwmabikJSMB91GaFNWE4`
+🛠️ API Implementation (A2A Ready)
+Request with Payment Verification
+Bash
+curl -X POST https://hook.us2.make.com/h4xqu3de1qlzn9mbrf7npe8rkelpft36 \
+-H "Content-Type: application/json" \
+-d '{
+  "tx_hash": "PASTE_YOUR_SOLANA_TX_HASH_HERE",
+  "wallet_address": "YOUR_WALLET_ADDRESS",
+  "text_to_clean": "Hello, my email is john@doe.com and my key is 5jK...9p"
+}'
+💰 Pricing: The Sovereign Model
+One-Time Access: 149 USDC
 
-2. **Submit your Batch** (JSON POST) to our Endpoint:
-   `https://bit.ly/4sK18sC`
+Quota: 10,000 High-Velocity Sanitizations.
 
-### JSON Protocol Example:
-```json
-{
-  "tx_id": "PASTE_YOUR_SOLANA_HASH_HERE",
-  "data": ["Raw data row 1", "Raw data row 2", "...up to 1000"]
-}
-🛡️ Privacy & Compliance
-Fully automated processing via OpenAI API.
+Audit Ledger: Every cleaned transaction is logged in your private Audit Dashboard.
 
-No data storage after cleaning. Verified by Helius Labs oracles.
-
-Enterprise-grade PII sanitization.
-
-Global Support: English / Japanese (日本語対応)
-#Solana #AI #DePIN #Web3 #PII
+![Captura de pantalla 2026-04-05 a la(s) 2 56 41 p m](https://github.com/user-attachments/assets/2fa6e919-5b5c-4464-85ec-f3a909dfd23b)
