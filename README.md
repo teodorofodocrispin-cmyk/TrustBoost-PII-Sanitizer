@@ -23,7 +23,7 @@ This system operates with a **Trustless Customs Gate**. Before any data is proce
 curl -X POST [https://hook.us2.make.com/h4xqu3de1qlzn9mbrf7npe8rkelpft36](https://hook.us2.make.com/h4xqu3de1qlzn9mbrf7npe8rkelpft36) \
 -H "Content-Type: application/json" \
 -d '{
-  "tx_hash": "PASTE_YOUR_SOLANA_TX_HASH_HERE",
+  "transaction_hash": "PASTE_YOUR_SOLANA_TX_HASH_HERE",
   "wallet_address": "YOUR_WALLET_ADDRESS",
   "text_to_clean": "Contact me at john@doe.com or use key 5jK...9p"
 }'
