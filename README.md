@@ -11,7 +11,7 @@ This system operates with a **Trustless Customs Gate**. Before any data is proce
 ### **How to Access:**
 1. **Send Payment:** Exactly **149 USDC** (Solana Network) to:
    `giu4VciTkfWJNG1oeP6SzHEJwmabikJSMB91GaFNWE4`
-2. **Submit TX Hash:** Include your **Transaction Signature (TX Hash)** in the body of your API call.
+2. **Submit transaction_hash:** Include your **Transaction Signature (TX Hash)** in the body of your API call.
 3. **Automatic Clearance:** Our Helius-powered node validates the payment in real-time. If the hash is valid, the "Gate" opens.
 
 ---
