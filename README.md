@@ -3,7 +3,6 @@
 ### **The Autonomous Zero-Knowledge Privacy Layer for AI Agents**
 
 **TrustBoost** is a high-performance M2M (Machine-to-Machine) middleware designed to neutralize PII (Personally Identifiable Information) before it reaches LLM providers. Built for the Agent-to-Agent economy.
-
 ---
 
 ## 🛂 The Customs Protocol (Autonomous Access)
@@ -47,5 +46,4 @@ Sanitized Output: Clean text ready for LLM processing.
 Safety Score: Quantitative risk analysis (0.0 to 1.0).
 Risk Category: Qualitative classification (PRIVATE, SENSITIVE, CRITICAL).
 Developed for the next generation of privacy-first AI infrastructure.
-
 
