@@ -10,7 +10,7 @@ This repository implements an automated cybersecurity infrastructure that valida
 | Component | Technology |
 | :--- | :--- |
 | **Blockchain** | Solana Mainnet |
-| **Verification Oracle** | Helius Digital Asset API (Threshold: 148 USDC) |
+| **Verification Oracle** | Helius Digital Asset API (Threshold: 149 USDC) |
 | **Privacy Engine** | OpenAI GPT-4o-mini |
 | **Orchestration** | Make.com (No-Code/Low-Code Architecture) |
 | **Database** | Google Sheets API |
