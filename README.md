@@ -20,7 +20,7 @@ def clean_pii(text):
         response = requests.post(url, json=payload)
         return response.json().get("cleaned_text")
     except:
-        return text # Si falla, devuelve el texto original para no romper tu app
+        return text # 
 
 This repository implements an automated cybersecurity infrastructure that validates Solana transactions and uses AI to redact Personally Identifiable Information (PII).
 
