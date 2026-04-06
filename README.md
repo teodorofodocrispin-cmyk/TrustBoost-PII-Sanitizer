@@ -1,8 +1,26 @@
 <img width="1024" height="665" alt="image" src="https://github.com/user-attachments/assets/914a7d71-65ce-4086-9195-4be2302745be" />
-# 🛡️ TrustBoost PII Sanitizer
-### **The Autonomous Zero-Knowledge Privacy Layer for AI Agents**
 
-# TrustBoost: PII Sanitizer & Web3 Gateway (Solana)
+🛡️ TrustBoost: Privacy Layer for AI
+Stop sending sensitive user data to LLMs. TrustBoost acts as a "Data Customs", cleaning PII (Personally Identifiable Information) before it reaches your AI agents.
+
+⚡ Quick Start (Trial Mode)
+You don't need a license to start. Use the TRIAL token to test the API immediately:
+
+import requests
+
+# 🛡️ TrustBoost Privacy Layer - Integration in 30 seconds
+def clean_pii(text):
+    url = "(https://hook.us2.make.com/h4xqu3de1qlzn9mbrf7npe8rkelpft36)" 
+    payload = {
+        "text": text,
+        "tx_hash": "TRIAL" # Free trial: first 50 requests included
+    }
+    
+    try:
+        response = requests.post(url, json=payload)
+        return response.json().get("cleaned_text")
+    except:
+        return text # Si falla, devuelve el texto original para no romper tu app
 
 This repository implements an automated cybersecurity infrastructure that validates Solana transactions and uses AI to redact Personally Identifiable Information (PII).
 
