@@ -2,6 +2,34 @@
 # 🛡️ TrustBoost PII Sanitizer
 ### **The Autonomous Zero-Knowledge Privacy Layer for AI Agents**
 
+# TrustBoost: PII Sanitizer & Web3 Gateway (Solana)
+
+This repository implements an automated cybersecurity infrastructure that validates Solana transactions and uses AI to redact Personally Identifiable Information (PII).
+
+### 🛠️ Technical Specifications
+| Component | Technology |
+| :--- | :--- |
+| **Blockchain** | Solana Mainnet |
+| **Verification Oracle** | Helius Digital Asset API (Threshold: 148 USDC) |
+| **Privacy Engine** | OpenAI GPT-4o-mini |
+| **Orchestration** | Make.com (No-Code/Low-Code Architecture) |
+| **Database** | Google Sheets API |
+
+### 🔍 System Logic (Verification Module)
+The workflow functions as an intelligent "Data Customs" gate:
+1. **Validation:** The system receives a `transaction_hash`.
+2. **Payment Filter:** Helius is queried. If the transaction is < 148 USDC, the process terminates immediately.
+3. **Sanitization:** Upon verified payment, the AI processes the text, redacting emails, private keys, passwords, and addresses.
+4. **Logging:** The sanitized output is securely stored in Google Sheets for auditing purposes.
+
+### 📑 Data Interface (JSON Payload)
+```json
+{
+  "transaction_hash": "string (Solana Tx Hash)",
+  "wallet_address": "string (Public Key)",
+  "text_to_clean": "string (Sensitive Data)"
+}
+
 **TrustBoost** is a high-performance M2M (Machine-to-Machine) middleware designed to neutralize PII (Personally Identifiable Information) before it reaches LLM providers. Built for the Agent-to-Agent economy.
 ---
 
