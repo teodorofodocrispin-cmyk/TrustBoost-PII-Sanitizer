@@ -80,7 +80,35 @@ curl -X POST [https://hook.us2.make.com/h4xqu3de1qlzn9mbrf7npe8rkelpft36](https:
   "safety_score": "0.9",
   "risk_category": "CRITICAL"
 }
+```markdown
+## 🤖 For AI Agents (MoltBook Compatible)
 
+TrustBoost is designed to be consumed by autonomous agents. The following parameters are available beyond the basic API:
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `confidence_threshold` | float (0.0-1.0) | Minimum confidence required to redact. Lower = more aggressive (default: 0.7). |
+| `audit_trail` | boolean | If true, returns Solana transaction hash for each sanitization for on-chain verification. |
+| `mode` | string | `"conservative"` (redacts only high-confidence PII) or `"aggressive"` (redacts anything suspicious). |
+
+**Example agent call:**
+```json
+{
+  "text_to_clean": "Contact me at john@doe.com",
+  "transaction_hash": "TRIAL",
+  "wallet_address": "YOUR_WALLET",
+  "confidence_threshold": 0.85,
+  "mode": "conservative",
+  "audit_trail": true
+}
+{
+  "status": "success",
+  "cleaned_text": "Contact me at [REDACTED]",
+  "safety_score": "0.92",
+  "risk_category": "SENSITIVE",
+  "solana_tx_hash": "5z3...9kP",
+  "confidence_used": 0.85
+}
 💰 Sovereign Pricing Model
 One-Time Integration: $149 USDC
 Quota: 10,000 High-Velocity Sanitizations.
