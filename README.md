@@ -121,3 +121,15 @@ Safety Score: Quantitative risk analysis (0.0 to 1.0).
 Risk Category: Qualitative classification (PRIVATE, SENSITIVE, CRITICAL).
 Developed for the next generation of privacy-first AI infrastructure.
 
+## ⚙️ Infrastructure & Reliability
+
+TrustBoost currently runs on **Make.com** webhooks with the following guarantees:
+
+| Aspect | Detail |
+|--------|--------|
+| Uptime target | 99.9% (standard Make.com SLA) |
+| Average latency | ~800ms per request |
+| Rate limits | 30 requests per second |
+| Fallback | None currently (roadmap: multi-provider) |
+
+**For mission-critical deployments:** [Contact our technical team](mailto:teodorofodocrispin@gmail.com) for dedicated instance options.
