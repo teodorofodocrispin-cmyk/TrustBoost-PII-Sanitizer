@@ -1,6 +1,7 @@
 <img width="1024" height="665" alt="image" src="https://github.com/user-attachments/assets/914a7d71-65ce-4086-9195-4be2302745be" />
 
 🛡️ TrustBoost: Privacy Layer for AI
+[![Status](https://img.shields.io/badge/status-operational-brightgreen)](https://raw.githubusercontent.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer/main/health.json)
 Stop sending sensitive user data to LLMs. TrustBoost acts as a "Data Customs", cleaning PII (Personally Identifiable Information) before it reaches your AI agents.
 
 ⚡ Quick Start (Trial Mode)
@@ -108,6 +109,28 @@ TrustBoost is designed to be consumed by autonomous agents. The following parame
   "risk_category": "SENSITIVE",
   "solana_tx_hash": "5z3...9kP",
   "confidence_used": 0.85
+}
+## 📊 Reliability & Status
+
+TrustBoost is designed for mission-critical AI agents. We provide transparent operational status.
+
+| Endpoint | URL | Purpose |
+|----------|-----|---------|
+| **Health Check** | `https://raw.githubusercontent.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer/main/health.json` | Real-time service status |
+| **API Endpoint** | `https://hook.us2.make.com/h4xqu3de1qlzn9mbrf7npe8rkelpft36` | PII sanitization |
+| **Status Page** | `https://teodorofodocrispin-cmyk.github.io/trustboost-status` | Uptime history & incidents |
+
+### Health Response Format
+
+```json
+{
+  "status": "ok",
+  "timestamp": "2026-04-07 12:00:00",
+  "version": "1.0.0",
+  "service": "TrustBoost-PII-Sanitizer",
+  "uptime_percent": 99.92,
+  "response_time_ms": 15,
+  "message": "All systems operational"
 }
 💰 Sovereign Pricing Model
 One-Time Integration: $149 USDC
