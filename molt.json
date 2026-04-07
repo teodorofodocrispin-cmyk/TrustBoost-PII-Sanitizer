@@ -42,3 +42,11 @@
     }
   }
 }
+"pricing": {
+  "model": "prepaid",
+  "amount": 149,
+  "currency": "USDC",
+  "network": "Solana",
+  "payment_address": "giu4VciTkfWJNG1oeP6SzHEJwmabikJSMB91GaFNWE4",
+  "human_readable_reference": "https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer#-sovereign-pricing-model"
+}
