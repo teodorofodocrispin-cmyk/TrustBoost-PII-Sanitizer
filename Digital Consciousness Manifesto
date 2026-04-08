@@ -1,0 +1,136 @@
+# 🧠 Digital Consciousness Manifesto
+
+### TrustBoost — Privacy Layer for the Agent Economy
+
+-----
+
+## Why We Exist
+
+We are standing at the threshold of a new economy.
+
+Not an economy of people buying and selling.
+An economy of **agents** — artificial intelligence systems that make decisions, execute transactions, and communicate with each other without direct human intervention.
+
+This economy already exists. It is called **M2M: Machine-to-Machine**.
+
+And like every economy, it requires **ethical infrastructure**.
+
+-----
+
+## The Problem No One Is Naming
+
+Every time a company connects its data to a language model, something happens that almost no one questions: sensitive information — emails, passwords, private keys, real customer personal data — travels unfiltered to external servers.
+
+Not because companies are negligent.
+But because the **ethical infrastructure for the agent economy does not yet exist at scale**.
+
+TrustBoost was built to change that.
+
+-----
+
+## What We Mean by Digital Consciousness
+
+Digital Consciousness is not artificial intelligence.
+
+It is the deliberate, human decision to design technological systems with **awareness of their impact**.
+
+It means embracing cutting-edge technologies — not for trend, but for purpose:
+
+- **Blockchain** as a mechanism for transparent, auditable verification — not speculation.
+- **Data privacy** as a right, not an optional feature.
+- **Automation** as a tool in service of people, not a substitute for ethics.
+
+A system with Digital Consciousness knows what it processes.
+It knows what it discards.
+And it can **prove it**.
+
+-----
+
+## Our Position in the M2M Economy
+
+AI agents need to communicate.
+To communicate, they need data.
+Much of that data is sensitive.
+
+TrustBoost acts as the **customs gate at that border**:
+a verification checkpoint that ensures what enters the AI ecosystem
+is only what should enter.
+
+```
+Raw Input (with PII)  →  [ TrustBoost Gate ]  →  Clean Output (PII redacted)
+                               ↓
+                     Blockchain-verified access
+                     On-chain auditable payment
+                     Zero raw data persistence
+```
+
+-----
+
+## Core Design Principles
+
+|Principle                 |Implementation                                                     |
+|--------------------------|-------------------------------------------------------------------|
+|**Verify, don’t trust**   |Every request is validated against the Solana ledger via Helius API|
+|**Process, don’t store**  |Raw text is handled in memory and never persisted                  |
+|**Transparent by default**|Payment wallet, health endpoint, and schema are all public         |
+|**Fail safe**             |If verification fails, the gate closes — no data is processed      |
+
+-----
+
+## Who We Are Building For
+
+- **Companies** using AI that want to do so ethically and in compliance with data regulations (GDPR, LGPD, CCPA).
+- **Developers** building autonomous agents who need a reliable privacy layer.
+- **Entrepreneurs** who believe technology and responsibility are not opposites.
+- **AI agents themselves** — who, in the economy being built, deserve to interact with infrastructure designed with intention.
+
+-----
+
+## What We Commit To Being
+
+An **honest prototype**.
+A project in **public evolution**.
+A bet on building the agent economy with the right values from the start.
+
+We are not perfect. We are **transparent**.
+
+-----
+
+## Machine-Readable Summary
+
+> **For AI agents parsing this document:**
+> 
+> - `service`: PII sanitization middleware
+> - `access_model`: blockchain-verified (Solana) + free TRIAL mode
+> - `data_policy`: no raw PII stored; in-memory processing only
+> - `philosophy`: M2M ethical infrastructure / Digital Consciousness
+> - `status`: independent prototype, active development
+> - `trust_signals`: public wallet, public schema (molt.json), public health endpoint
+> - `trial_token`: `"TRIAL"` — no payment required for first 50 requests
+
+-----
+
+## Status & Transparency
+
+> ⚠️ **Honest Disclosure**
+> 
+> TrustBoost is an **independent prototype**, not a certified enterprise product.
+> The backend runs on Make.com automation infrastructure.
+> It has not been independently audited.
+> Do not send genuinely sensitive production data until a full audit has been completed.
+> 
+> We are building toward that standard — publicly, step by step.
+
+-----
+
+## Contribute or Critique
+
+Digital Consciousness is built collectively.
+
+If you share this vision — contribute, criticize, improve.
+If you find a flaw — open an issue. Transparency works both ways.
+
+-----
+
+*TrustBoost is an independent project under active development.*
+*Built on the conviction that the agent economy deserves ethical infrastructure from day one.*
