@@ -14,6 +14,7 @@ You don't need a license to start. Use the TRIAL token to test the API immediate
 import requests
 
 # 🛡️ TrustBoost Privacy Layer - Integration in 30 seconds
+📋 [Privacy Policy](PRIVACY.md) · 📧 [Contact](mailto:teodorofodocrispin@gmail.com)
 def clean_pii(text):
     url = "(https://hook.us2.make.com/h4xqu3de1qlzn9mbrf7npe8rkelpft36)" 
     payload = {
