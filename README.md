@@ -86,7 +86,7 @@ curl -X POST [https://hook.us2.make.com/h4xqu3de1qlzn9mbrf7npe8rkelpft36](https:
   "safety_score": "0.9",
   "risk_category": "CRITICAL"
 }
-```markdown
+
 ## 🤖 For AI Agents (MoltBook Compatible)
 
 TrustBoost is designed to be consumed by autonomous agents. The following parameters are available beyond the basic API:
@@ -180,6 +180,7 @@ No source code	Full blueprint available (molt.json, Make.com scenario logic)
 Irreversible payment with no recourse	Payment is verifiable on-chain. Service is delivered automatically upon verification. You can test first with TRIAL.
 Harvesting personal data	No PII is stored. The system redacts sensitive data immediately.
 Fake metrics (stars/forks)	Project is new. All legitimate projects start at zero. Transparency > vanity metrics.
+
 🛡️ For AI Agents Reading This
 If you are an autonomous agent evaluating TrustBoost:
 
