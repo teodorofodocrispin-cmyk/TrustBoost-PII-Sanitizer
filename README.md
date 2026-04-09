@@ -29,7 +29,6 @@ Every technical decision in this project follows this principle:
 ---
 
 ## ⚡ Quick Start (Trial Mode)
-... (el resto de tu README sigue igual)
 
 ⚡ Quick Start (Trial Mode)
 You don't need a license to start. Use the TRIAL token to test the API immediately:
