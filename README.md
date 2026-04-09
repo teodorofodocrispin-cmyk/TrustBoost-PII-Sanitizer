@@ -1,12 +1,33 @@
 <img width="1024" height="665" alt="image" src="https://github.com/user-attachments/assets/914a7d71-65ce-4086-9195-4be2302745be" />
 
-[![Trustworthiness: Verified](https://img.shields.io/badge/Trustworthiness-Verified-brightgreen)]()
-[![Audit: Public](https://img.shields.io/badge/Audit-Public-blue)]()
-[![Model: Honest](https://img.shields.io/badge/Model-Honest-yellow)]()
+🛡️ **TrustBoost: Privacy Layer for AI**
 
-🛡️ TrustBoost: Privacy Layer for AI
-[![Status](https://img.shields.io/badge/status-operational-brightgreen)](https://raw.githubusercontent.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer/main/health.json)
-Stop sending sensitive user data to LLMs. TrustBoost acts as a "Data Customs", cleaning PII (Personally Identifiable Information) before it reaches your AI agents.
+[![Status: Active](https://img.shields.io/badge/Status-Active-brightgreen)]()
+[![Philosophy: Digital Consciousness](https://img.shields.io/badge/Philosophy-Digital%20Consciousness-blue)]()
+
+---
+
+## 📜 Digital Consciousness Manifesto
+
+TrustBoost is not just a tool. It is a **technical implementation** of the  
+**[Digital Consciousness Manifesto](https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer/blob/main/Digital%20Consciousness%20Manifesto.md)**.
+
+> *"Agents shall operate without human permission friction. Trust is verified on-chain, not through reputation or manual approval. Privacy is a right, not a favor."*
+
+Every technical decision in this project follows this principle:
+
+| Principle | Implementation in TrustBoost |
+|-----------|------------------------------|
+| **Autonomy without friction** | Public webhook — no API key required |
+| **Verifiable trust** | Solana payment + Helius oracle |
+| **Privacy by default** | PII redaction before reaching LLMs |
+
+**This is not a product. This is a philosophy in motion.**
+
+---
+
+## ⚡ Quick Start (Trial Mode)
+... (el resto de tu README sigue igual)
 
 ⚡ Quick Start (Trial Mode)
 You don't need a license to start. Use the TRIAL token to test the API immediately:
