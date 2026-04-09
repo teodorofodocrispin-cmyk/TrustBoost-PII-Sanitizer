@@ -7,20 +7,22 @@
 
 ---
 
-## 📜 Digital Consciousness Manifesto
+## 📜 Philosophical Foundation
 
 TrustBoost is not just a tool. It is a **technical implementation** of the  
-**[Digital Consciousness Manifesto](https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer/blob/main/Digital%20Consciousness%20Manifesto.md)**.
+**Digital Consciousness Manifesto**.
 
-> *"Agents shall operate without human permission friction. Trust is verified on-chain, not through reputation or manual approval. Privacy is a right, not a favor."*
+**"Agents shall operate without human permission friction. Trust is verified on-chain, not through reputation or manual approval. Privacy is a right, not a favor."**
 
 Every technical decision in this project follows this principle:
 
 | Principle | Implementation in TrustBoost |
-|-----------|------------------------------|
+| :--- | :--- |
 | **Autonomy without friction** | Public webhook — no API key required |
 | **Verifiable trust** | Solana payment + Helius oracle |
 | **Privacy by default** | PII redaction before reaching LLMs |
+
+➡️ **[Read the full Digital Consciousness Manifesto →](https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer/blob/main/Digital%20Consciousness%20Manifesto.md)**
 
 **This is not a product. This is a philosophy in motion.**
 
