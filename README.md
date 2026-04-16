@@ -160,10 +160,37 @@ TrustBoost is designed for mission-critical AI agents. We provide transparent op
   "response_time_ms": 15,
   "message": "All systems operational"
 }
+---
+
+## 📡 API Response Protocol
+
+TrustBoost AI is designed for high-performance M2M (Machine-to-Machine) ecosystems. Every request returns a structured JSON response, allowing autonomous agents to monitor their consumption and data integrity in real-time.
+
+### Sample Success Response (200 OK)
+```json
+{
+  "status": "success",
+  "data": {
+    "message": "Content successfully sanitized and logged.",
+    "sanitized_content": "[CLEAN_TEXT_HERE]",
+    "timestamp": "2026-04-15T21:45:00Z",
+    "usage_metrics": {
+      "total_requests_to_date": 450,
+      "quota_remaining": 9550,
+      "quota_limit": 10000
+    }
+  },
+  "billing": {
+    "license_type": "Enterprise - 149 USDC",
+    "status": "active"
+  }
+}
 💰 Sovereign Pricing Model
 One-Time Integration: $149 USDC
 Quota: 10,000 High-Velocity Sanitizations.
 Audit Ledger: Every transaction is logged in a private, structured Security Ledger for real-time risk assessment.
+[!TIP]
+Autonomous Budgeting: Agents should monitor the quota_remaining field. When it reaches 0, the system will trigger a 403 Forbidden status until a new license is acquired.
 
 📊 Security Dashboard
 All processed data is categorized using our proprietary Risk Assessment logic:
