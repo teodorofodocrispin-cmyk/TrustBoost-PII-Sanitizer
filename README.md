@@ -29,6 +29,22 @@ Every technical decision in this project follows this principle:
 
 **This is not a product. This is a philosophy in motion.**
 
+## 📚 Academic Foundation
+
+TrustBoost addresses challenges recently systematized in academic research on blockchain-based agent-to-agent payments.
+
+A 2026 study (arXiv:2604.03733) identifies four critical stages in A2A payments: **discovery, authorization, execution, and accounting**. It highlights key unsolved problems:
+
+| Problem | Description | How TrustBoost solves it |
+|---------|-------------|--------------------------|
+| **Weak intent binding** | Payment is not strongly linked to the specific action being paid for. | Each Solana `tx_hash` is bound to a single sanitization request. |
+| **Misuse under valid authorization** | An agent uses a valid payment authorization for an unintended action. | TrustBoost only performs PII redaction — no other actions are possible. |
+| **Payment-service decoupling** | Payment and service happen in separate systems without synchronization. | Payment is verified (via Helius) **before** the service is delivered. |
+| **Limited accountability** | Difficult to audit or dispute failed transactions. | Every operation is logged to Google Sheets with full traceability. |
+
+TrustBoost is not just a tool. It is a **practical implementation** of principles that academic research is only beginning to systematize.
+
+> *Zhang, Y., et al. "SoK: Blockchain Agent-to-Agent Payments." arXiv preprint arXiv:2604.03733 (2026).*
 ---
 
 ## ⚡ Quick Start (Trial Mode)
