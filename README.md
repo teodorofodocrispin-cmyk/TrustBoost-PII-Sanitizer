@@ -1,5 +1,4 @@
-<img width="1024" height="665" alt="image" src="https://github.com/user-attachments/assets/914a7d71-65ce-4086-9195-4be2302745be" />
-
+<img width="1536" height="1024" alt="ChatGPT Image 17 abr 2026, 10_24_47 a m" src="https://github.com/user-attachments/assets/5ac2a5c4-9ad3-410d-abaa-788527bd4f73" />
 
 🛡️ TrustBoost: Information Flow Control for Autonomous AI Agents
 
