@@ -1,5 +1,6 @@
 <img width="1024" height="665" alt="image" src="https://github.com/user-attachments/assets/914a7d71-65ce-4086-9195-4be2302745be" />
 
+
 🛡️ TrustBoost: Information Flow Control for Autonomous AI Agents
 
 [![Status: Active](https://img.shields.io/badge/Status-Active-brightgreen)]()
