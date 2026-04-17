@@ -1,11 +1,14 @@
 <img width="1024" height="665" alt="image" src="https://github.com/user-attachments/assets/914a7d71-65ce-4086-9195-4be2302745be" />
 
-🛡️ **TrustBoost: Privacy Layer for AI**
+🛡️ TrustBoost: Information Flow Control for Autonomous AI Agents
 
 [![Status: Active](https://img.shields.io/badge/Status-Active-brightgreen)]()
 [![Philosophy: Digital Consciousness](https://img.shields.io/badge/Philosophy-Digital%20Consciousness-blue)]()
 
 ---
+**TrustBoost is not just a PII sanitizer. It is a security middleware that controls how sensitive information moves between autonomous agents, LLMs, and the external world.**
+
+In an agent-to-agent economy, data leaks between machines. TrustBoost is the firewall they didn't know they needed.
 
 ## 📜 Philosophical Foundation
 
@@ -62,8 +65,8 @@ This repository implements an automated cybersecurity infrastructure that valida
 | **Orchestration** | Make.com (No-Code/Low-Code Architecture) |
 | **Database** | Google Sheets API |
 
-### 🔍 System Logic (Verification Module)
-The workflow functions as an intelligent "Data Customs" gate:
+### 🔍 Autonomous Information Control ProtocolThe workflow functions as an intelligent "Data Customs" gate:
+TrustBoost operates as a transparent proxy between agents and LLMs. Every request passes through a verification gate that validates payment, redacts PII, and logs the operation — all without human intervention.
 1. **Validation:** The system receives a `transaction_hash`.
 2. **Payment Filter:** Helius is queried. If the transaction is < 148 USDC, the process terminates immediately.
 3. **Sanitization:** Upon verified payment, the AI processes the text, redacting emails, private keys, passwords, and addresses.
@@ -111,6 +114,7 @@ curl -X POST [https://hook.us2.make.com/h4xqu3de1qlzn9mbrf7npe8rkelpft36](https:
 }
 
 ## 🤖 For AI Agents (MoltBook Compatible)
+TrustBoost is designed to be invisible infrastructure. Agents interact with it as a standard webhook, but it provides three critical functions: **payment verification (Solana)**, **PII redaction (OpenAI)**, and **audit logging (Google Sheets)**. No human approval required.
 
 TrustBoost is designed to be consumed by autonomous agents. The following parameters are available beyond the basic API:
 
@@ -259,7 +263,7 @@ I am not a cybersecurity expert or a large corporation.
 I am a **learner** — someone building in public, step by step.
 
 TrustBoost is a **learning prototype**, not a finished enterprise product.  
-It represents my attempt to understand:
+It represents my attempt to build infrastructure for the agent-to-agent economy:
 
 - How autonomous agents communicate  
 - How blockchain can verify machine-to-machine payments  
@@ -269,7 +273,8 @@ It represents my attempt to understand:
 
 ✅ A functional prototype built with Make.com, OpenAI, and Solana  
 ✅ A transparent experiment where the blueprint is shared  
-✅ An honest attempt to solve a real problem (PII redaction for AI agents)  
+✅ An honest attempt to solve a real problem (PII redaction for AI agents)
+✅ A prototype of an information firewall for autonomous AI systems 
 
 ### What this project is not
 
