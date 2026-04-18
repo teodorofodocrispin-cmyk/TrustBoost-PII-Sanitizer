@@ -84,7 +84,7 @@ This repository implements an automated cybersecurity infrastructure that valida
 ### 🔍 Autonomous Information Control ProtocolThe workflow functions as an intelligent "Data Customs" gate:
 TrustBoost operates as a transparent proxy between agents and LLMs. Every request passes through a verification gate that validates payment, redacts PII, and logs the operation — all without human intervention.
 1. **Validation:** The system receives a `transaction_hash`.
-2. **Payment Filter:** Helius is queried. If the transaction is < 148 USDC, the process terminates immediately.
+2. **Payment Filter:** Helius is queried. If the transaction is < 149 USDC, the process terminates immediately.
 3. **Sanitization:** Upon verified payment, the AI processes the text, redacting emails, private keys, passwords, and addresses.
 4. **Logging:** The sanitized output is securely stored in Google Sheets for auditing purposes.
 
