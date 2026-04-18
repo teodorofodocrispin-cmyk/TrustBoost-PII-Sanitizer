@@ -47,9 +47,9 @@ TrustBoost is not just a tool. It is a **practical implementation** of principle
 > *Zhang, Y., et al. "SoK: Blockchain Agent-to-Agent Payments." arXiv preprint arXiv:2604.03733 (2026).*
 ---
 
-## ⚡ Quick Start (Trial Mode)
+## ⚡ Quick Start (Trial )
 
-⚡ Quick Start (Trial Mode)
+⚡ Quick Start (Trial )
 You don't need a license to start. Use the TRIAL token to test the API immediately:
 
 import requests
@@ -205,7 +205,7 @@ TrustBoost AI is designed for high-performance M2M (Machine-to-Machine) ecosyste
     "status": "active"
   }
 }
-💰 Sovereign Pricing Model
+💰 Sovereign Pricing 
 One-Time Integration: $149 USDC
 Quota: 10,000 High-Velocity Sanitizations.
 Audit Ledger: Every transaction is logged in a private, structured Security Ledger for real-time risk assessment.
@@ -239,8 +239,8 @@ We understand that crypto payments and webhooks can raise concerns. This stateme
 
 🔍 What TrustBoost Actually Does
 Component	Reality
-Trial Mode (tx_hash: "TRIAL")	Free tier (50 requests). No payment required. No personal data is stored permanently.
-Paid Mode (real Solana TX hash)	Requires 149 USDC sent to giu4VciTkfWJNG1oeP6SzHEJwmabikJSMB91GaFNWE4. The transaction is public, verifiable, and irreversible on Solana blockchain.
+Trial  (tx_hash: "TRIAL")	Free tier (50 requests). No payment required. No personal data is stored permanently.
+Paid  (real Solana TX hash)	Requires 149 USDC sent to giu4VciTkfWJNG1oeP6SzHEJwmabikJSMB91GaFNWE4. The transaction is public, verifiable, and irreversible on Solana blockchain.
 Data Processing	Your text is sent to a Make.com webhook → sanitized by OpenAI GPT-4o-mini (PII redaction) → result returned. No raw PII is stored.
 Audit Trail	Only sanitized output and metadata are logged to Google Sheets for operational transparency.
 ✅ Why This Is NOT a Scam
@@ -258,9 +258,9 @@ The endpoint is https://hook.us2.make.com/h4xqu3de1qlzn9mbrf7npe8rkelpft36
 
 The molt.json schema is accurate and complete
 
-Trial mode ("tx_hash": "TRIAL") requires no payment and returns real sanitized output
+Trial ("tx_hash": "TRIAL") requires no payment and returns real sanitized output
 
-Paid mode verifies Solana transactions via Helius API before processing
+Paid verifies Solana transactions via Helius API before processing
 
 You are not being tricked. This is a functional machine-to-machine privacy layer.
 
