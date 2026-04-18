@@ -173,8 +173,8 @@ TrustBoost is designed for mission-critical AI agents. We provide transparent op
 ```json
 {
   "status": "ok",
-  "timestamp": "2026-04-07 12:00:00",
-  "version": "1.0.0",
+  "timestamp": "2026-04-18 08:00:00",
+"version": "1.1.0",
   "service": "TrustBoost-PII-Sanitizer",
   "uptime_percent": 99.92,
   "response_time_ms": 15,
