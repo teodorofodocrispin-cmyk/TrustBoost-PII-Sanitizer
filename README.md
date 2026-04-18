@@ -83,7 +83,7 @@ This repository implements an automated cybersecurity infrastructure that valida
 
 ### 🔍 Autonomous Information Control ProtocolThe workflow functions as an intelligent "Data Customs" gate:
 TrustBoost operates as a transparent proxy between agents and LLMs. Every request passes through a verification gate that validates payment, redacts PII, and logs the operation — all without human intervention.
-1. **Validation:** The system receives a `transaction_hash`.
+1. **Validation:** The system receives a `tx_hash`.
 2. **Payment Filter:** Helius is queried. If the transaction is < 149 USDC, the process terminates immediately.
 3. **Sanitization:** Upon verified payment, the AI processes the text, redacting emails, private keys, passwords, and addresses.
 4. **Logging:** The sanitized output is securely stored in Google Sheets for auditing purposes.
@@ -91,9 +91,9 @@ TrustBoost operates as a transparent proxy between agents and LLMs. Every reques
 ### 📑 Data Interface (JSON Payload)
 ```json
 {
-  "transaction_hash": "string (Solana Tx Hash)",
+  "tx_hash": "string (Solana Tx Hash)",
   "wallet_address": "string (Public Key)",
-  "text_to_clean": "string (Sensitive Data)"
+  "text": "string (Sensitive Data)"
 }
 
 **TrustBoost** is a high-performance M2M (Machine-to-Machine) middleware designed to neutralize PII (Personally Identifiable Information) before it reaches LLM providers. Built for the Agent-to-Agent economy.
@@ -105,7 +105,7 @@ This system operates with a **Trustless Customs Gate**. Before any data is proce
 ### **How to Access:**
 1. **Send Payment:** Exactly **149 USDC** (Solana Network) to:
    `giu4VciTkfWJNG1oeP6SzHEJwmabikJSMB91GaFNWE4`
-2. **Submit transaction_hash:** Include your **Transaction Signature (TX Hash)** in the body of your API call.
+2. **Submit tx_hash:** Include your **Transaction Signature (TX Hash)** in the body of your API call.
 3. **Automatic Clearance:** Our Helius-powered node validates the payment in real-time. If the hash is valid, the "Gate" opens.
 
 ---
@@ -117,9 +117,9 @@ This system operates with a **Trustless Customs Gate**. Before any data is proce
 curl -X POST [https://hook.us2.make.com/h4xqu3de1qlzn9mbrf7npe8rkelpft36](https://hook.us2.make.com/h4xqu3de1qlzn9mbrf7npe8rkelpft36) \
 -H "Content-Type: application/json" \
 -d '{
-  "transaction_hash": "PASTE_YOUR_SOLANA_TX_HASH_HERE",
+  "tx_hash": "PASTE_YOUR_SOLANA_TX_HASH_HERE",
   "wallet_address": "YOUR_WALLET_ADDRESS",
-  "text_to_clean": "Contact me at john@doe.com or use key 5jK...9p"
+  "text": "Contact me at john@doe.com or use key 5jK...9p"
 }'
 
 {
