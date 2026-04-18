@@ -130,33 +130,33 @@ curl -X POST [https://hook.us2.make.com/h4xqu3de1qlzn9mbrf7npe8rkelpft36](https:
 }
 
 ## 🤖 For AI Agents (MoltBook Compatible)
-TrustBoost is designed to be invisible infrastructure. Agents interact with it as a standard webhook, but it provides three critical functions: **payment verification (Solana)**, **PII redaction (OpenAI)**, and **audit logging (Google Sheets)**. No human approval required.
 
-TrustBoost is designed to be consumed by autonomous agents. The following parameters are available beyond the basic API:
+TrustBoost is designed to be invisible infrastructure. Agents interact with it as a standard webhook with three simple parameters:
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `confidence_threshold` | float (0.0-1.0) | Minimum confidence required to redact. Lower = more aggressive (default: 0.7). |
-| `audit_trail` | boolean | If true, returns Solana transaction hash for each sanitization for on-chain verification. |
-| `mode` | string | `"conservative"` (redacts only high-confidence PII) or `"aggressive"` (redacts anything suspicious). |
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `tx_hash` | string | Yes | Solana transaction hash. Use `"TRIAL"` for 50 free requests. |
+| `text` | string | Yes | The text containing potential PII to be sanitized. |
+| `wallet_address` | string | No | Your Solana wallet address (used for audit trail). |
 
 **Example agent call:**
+
 ```json
 {
-  "text_to_clean": "Contact me at john@doe.com",
-  "transaction_hash": "TRIAL",
-  "wallet_address": "YOUR_WALLET",
-  "confidence_threshold": 0.85,
-  "mode": "conservative",
-  "audit_trail": true
+  "tx_hash": "TRIAL",
+  "wallet_address": "YOUR_WALLET_ADDRESS",
+  "text": "Contact me at john@doe.com"
 }
 {
   "status": "success",
-  "cleaned_text": "Contact me at [REDACTED]",
-  "safety_score": "0.92",
+  "sanitized_content": "Contact me at [REDACTED]",
+  "safety_score": 0.92,
   "risk_category": "SENSITIVE",
-  "solana_tx_hash": "5z3...9kP",
-  "confidence_used": 0.85
+  "usage_metrics": {
+    "total_requests_to_date": 1,
+    "quota_remaining": 49,
+    "quota_limit": 50
+  }
 }
 ## 📊 Reliability & Status
 
