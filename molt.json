@@ -1,52 +1,110 @@
 {
   "$schema": "https://raw.githubusercontent.com/molt/schema/main/skill.schema.json",
   "name": "TrustBoost-PII-Sanitizer",
-  "version": "1.0.0",
-  "description": "Blockchain-verified privacy layer that sanitizes PII (emails, keys, passwords) before sending data to LLMs. Integrates with Solana for payment verification.",
+  "version": "1.1.0",
+  "description": "Blockchain-verified privacy layer that sanitizes PII (emails, keys, passwords, phone numbers, addresses) before sending data to LLMs. Integrates with Solana for payment verification via Helius oracle.",
   "author": "teodorofodocrispin-cmyk",
   "license": "MIT",
   "triggers": ["sanitize", "clean pii", "remove sensitive data", "redact", "pii removal"],
   "tags": ["security", "privacy", "pii", "solana", "llm", "guardrails", "data sanitizer"],
   "endpoints": {
-    "api": "https://hook.us2.make.com/h4xqu3de1qlzn9mbrf7npe8rkelpft36"
+    "api": "https://hook.us2.make.com/h4xqu3de1qlzn9mbrf7npe8rkelpft36",
+    "health": "https://raw.githubusercontent.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer/main/health.json"
   },
   "parameters": {
-    "text_to_clean": {
+    "text": {
       "type": "string",
       "description": "The text containing potential PII to be sanitized",
       "required": true
     },
-    "transaction_hash": {
+    "tx_hash": {
       "type": "string",
-      "description": "Solana transaction hash for payment verification (use 'TRIAL' for testing)",
+      "description": "Solana transaction hash for payment verification. Use 'TRIAL' for free tier (50 free sanitizations).",
       "required": true
     },
     "wallet_address": {
       "type": "string",
-      "description": "Your Solana wallet address",
+      "description": "Your Solana wallet address (optional, used for audit trail)",
       "required": false
     }
   },
   "outputs": {
-    "cleaned_text": {
+    "status": {
       "type": "string",
-      "description": "Text with PII redacted"
+      "description": "Execution status: 'success' or 'empty_input'"
+    },
+    "sanitized_content": {
+      "type": "string",
+      "description": "Text with all PII replaced by [REDACTED] tag"
+    },
+    "entities_removed": {
+      "type": "boolean",
+      "description": "True if any PII entities were detected and redacted"
     },
     "safety_score": {
-      "type": "string",
-      "description": "Quantitative risk analysis (0.0 to 1.0)"
+      "type": "number",
+      "description": "Quantitative risk score from 0.0 (clean) to 1.0 (high risk)"
     },
     "risk_category": {
       "type": "string",
-      "description": "Qualitative classification (PRIVATE, SENSITIVE, CRITICAL)"
+      "description": "Qualitative risk classification: CRITICAL (keys/passwords/financial), PRIVATE (emails/IDs/phones), SENSITIVE (handles/locations)"
+    },
+    "usage_metrics": {
+      "type": "object",
+      "description": "Quota tracking object",
+      "properties": {
+        "total_requests_to_date": {
+          "type": "number",
+          "description": "Total requests consumed so far"
+        },
+        "quota_remaining": {
+          "type": "number",
+          "description": "Remaining requests before quota is exhausted"
+        },
+        "quota_limit": {
+          "type": "number",
+          "description": "Total quota limit: 50 for TRIAL, 10,000 for paid license"
+        }
+      }
     }
+  },
+  "privacy": {
+    "raw_input_stored": false,
+    "stored_fields": ["tx_hash", "input_length_chars", "cleaned_text", "safety_score", "risk_category", "timestamp"],
+    "storage_backend": "Google Sheets (private audit ledger)",
+    "note": "Raw input text is never stored. Only character length is logged for operational traceability."
+  },
+  "quota": {
+    "trial": {
+      "token": "TRIAL",
+      "limit": 50,
+      "cost": 0,
+      "description": "Free tier — 50 sanitizations to evaluate the service. No payment required."
+    },
+    "paid": {
+      "limit": 10000,
+      "cost": 149,
+      "currency": "USDC",
+      "description": "Full license — 10,000 sanitizations upon verified payment of 149 USDC on Solana."
+    }
+  },
+  "error_responses": {
+    "402": {
+      "code": "INSUFFICIENT_PAYMENT",
+      "description": "Transaction amount is below the required 149 USDC threshold."
+    },
+    "403": {
+      "code": "QUOTA_EXHAUSTED",
+      "description": "Request quota has been reached (50 for TRIAL, 10,000 for paid). Acquire a new license to continue."
+    }
+  },
+  "pricing": {
+    "model": "prepaid",
+    "amount": 149,
+    "currency": "USDC",
+    "network": "Solana",
+    "payment_address": "giu4VciTkfWJNG1oeP6SzHEJwmabikJSMB91GaFNWE4",
+    "quota": 10000,
+    "human_readable_reference": "https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer#-sovereign-pricing-model"
   }
-}
-"pricing": {
-  "model": "prepaid",
-  "amount": 149,
-  "currency": "USDC",
-  "network": "Solana",
-  "payment_address": "giu4VciTkfWJNG1oeP6SzHEJwmabikJSMB91GaFNWE4",
-  "human_readable_reference": "https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer#-sovereign-pricing-model"
 }
