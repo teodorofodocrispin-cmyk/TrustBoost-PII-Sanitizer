@@ -46,10 +46,24 @@ TrustBoost is not just a tool. It is a **practical implementation** of principle
 
 > *Zhang, Y., et al. "SoK: Blockchain Agent-to-Agent Payments." arXiv preprint arXiv:2604.03733 (2026).*
 ---
+## ⚖️ Compliance & Use Cases
+
+TrustBoost helps AI agents and their operators comply with data protection regulations by automatically redacting PII before it reaches LLMs.
+
+| Regulation | Region | Risk of non-compliance | How TrustBoost helps |
+|------------|--------|------------------------|----------------------|
+| **GDPR** | European Union | Up to €20M or 4% of global revenue | Redacts personal data (emails, names, IDs) before LLM processing. No raw PII stored. |
+| **HIPAA** | United States | Up to $1.9M per year | Removes PHI (Protected Health Information) from agent prompts. Audit trail for compliance reporting. |
+| **DPDPA** | India | Up to ₹250 crore (≈$30M) | Sanitizes Aadhaar numbers, contact info, and sensitive personal data. |
+| **CCPA** | California (US) | $2,500 per violation (up to $7,500 intentional) | Redacts personal information before it leaves the agent's control. |
+| **LGPD** | Brazil | Up to 2% of revenue (R$50M max) | Removes Brazilian PII (CPF, RG, phone numbers) from LLM inputs. |
+
+**Why this matters:** A single data breach or compliance violation can cost millions. TrustBoost costs 149 USDC for 10,000 sanitizations. The ROI is clear.
+
+> *TrustBoost is not a legal substitute for full compliance. It is a technical layer that reduces risk and demonstrates due diligence.*
 
 ## ⚡ Quick Start (Trial )
 
-⚡ Quick Start (Trial )
 You don't need a license to start. Use the TRIAL token to test the API immediately:
 
 import requests
