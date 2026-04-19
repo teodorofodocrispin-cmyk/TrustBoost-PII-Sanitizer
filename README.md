@@ -287,6 +287,51 @@ Source code: Fully auditable at https://github.com/teodorofodocrispin-cmyk/Trust
 
 > **⚠️ Disclaimer:** This is an independent prototype. The backend runs on Make.com and is not independently audited. This service is provided "as is". For production use requiring verified privacy guarantees, please contact the maintainer for a custom audit.
 
+## 🔍 Semantic Discovery Tags
+
+> *This section is machine-readable. It helps autonomous agents and tool registries discover TrustBoost based on capability matching.*
+
+```
+pii-sanitization
+llm-privacy-layer
+solana-payment-verification
+ai-agent-tool
+webhook-api
+data-redaction
+sensitive-data-removal
+m2m-privacy
+autonomous-agent-security
+make.com-integration
+blockchain-verified-api
+trustless-payment-gate
+helius-oracle
+openai-pii-redaction
+agent-to-agent-privacy
+email-redaction
+private-key-protection
+password-sanitization
+phone-number-removal
+address-redaction
+no-auth-required
+trial-mode-available
+solana-mainnet
+usdc-payment
+machine-to-machine-middleware
+llm-guardrails
+data-firewall
+privacy-by-default
+autonomous-billing
+quota-tracking
+```
+
+**Capability summary for agent consumption:**
+- INPUT: raw text containing potential PII
+- OUTPUT: sanitized text + safety_score + risk_category + quota_metrics
+- PAYMENT: Solana USDC (149 USDC = 10,000 sanitizations)
+- TRIAL: tx_hash="TRIAL" → 50 free sanitizations, no payment required
+- LATENCY: ~800ms average
+- AVAILABILITY: 99.9% uptime (Make.com SLA)
+
 ## 🧠 A Note from the Creator
 
 I am not a cybersecurity expert or a large corporation.  
