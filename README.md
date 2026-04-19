@@ -285,6 +285,8 @@ Contact: teodorofodocrispin@gmail.com
 
 Source code: Fully auditable at https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer
 
+Composio Toolkit: https://request.composio.dev/boards/tool-requests/posts/trustboost-pii-sanitizer
+
 > **⚠️ Disclaimer:** This is an independent prototype. The backend runs on Make.com and is not independently audited. This service is provided "as is". For production use requiring verified privacy guarantees, please contact the maintainer for a custom audit.
 
 ## 🔍 Semantic Discovery Tags
