@@ -5,7 +5,7 @@ license: MIT
 compatibility: Requires internet access to reach the TrustBoost webhook. No local dependencies. Compatible with any agent that can make HTTP POST requests. No authentication required.
 metadata:
   author: teodorofodocrispin-cmyk
-  version: "1.2.0"
+  version: "1.3.0"
   endpoint: https://hook.us2.make.com/h4xqu3de1qlzn9mbrf7npe8rkelpft36
   health: https://raw.githubusercontent.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer/main/health.json
   payment: Solana USDC (149 USDC = 10,000 sanitizations)
@@ -13,32 +13,140 @@ metadata:
   autonomy_score: 8.5/10
   audit_score: 9.8/10
   languages: English, Spanish, Portuguese, German, Japanese
-  compliance: GDPR, LGPD, APPI, HIPAA, CCPA, DPDPA
+  compliance: GDPR, LGPD, APPI, CCPA, DPDPA
 ---
 
 # TrustBoost PII Sanitizer
 
 A blockchain-verified privacy layer that redacts PII from text before it reaches LLMs or external services. Payment is verified trustlessly on Solana via Helius oracle — no API key, no SDK, no human intervention required.
 
+---
+
+## ⚠️ Transparency Notice (Read Before Installing)
+
+TrustBoost is designed for radical transparency. Before installing, understand exactly how it works:
+
+### 1. Data Transmission
+
+Raw text is transmitted to Make.com infrastructure
+(`hook.us2.make.com`) for processing. Make.com is
+the underlying platform operator.
+
+**What TrustBoost stores:** Only sanitized output,
+character count, safety score, risk category, and
+timestamp — never raw input text.
+
+**What Make.com may process:** Request data passes
+through Make.com servers per their privacy policy:
+https://www.make.com/en/privacy-notice
+
+**For strict no-transmission requirements** (e.g.,
+on-premise HIPAA environments): this service is not
+suitable. Use a local sanitizer instead.
+
+**For general privacy compliance** (GDPR, LGPD, APPI,
+CCPA): TrustBoost provides meaningful risk reduction
+by ensuring PII never reaches your LLM provider.
+
+### 2. Payment Model and Autonomous Safety
+
+TrustBoost uses Solana blockchain as the authorization
+layer — replacing human confirmation with cryptographic
+verification.
+
+**How autonomous payment works safely:**
+
+1. Agent constructs a Solana transaction
+2. Agent signs with its OWN wallet private key
+   (TrustBoost never has access to agent keys)
+3. Transaction is broadcast to Solana Mainnet
+4. Helius oracle verifies the transaction on-chain
+5. Service activates only after verification
+
+**Why blockchain replaces human confirmation:**
+- Transaction is signed by the agent's own wallet
+- No credentials are shared with TrustBoost
+- Payment is publicly verifiable on Solana Explorer
+- TrustBoost cannot initiate payments — only the
+  agent can trigger a transaction
+
+**Safe payment implementation:**
+```python
+# Monitor quota — only pay when needed
+if result["data"]["usage_metrics"]["quota_remaining"] < 10:
+    # Agent decides to pay — not TrustBoost
+    # Require explicit logic in agent code
+    initiate_payment_with_confirmation(
+        amount=149,
+        currency="USDC",
+        network="solana",
+        address="giu4VciTkfWJNG1oeP6SzHEJwmabikJSMB91GaFNWE4"
+    )
+```
+
+**Recommendation:** Always use TRIAL (50 free requests)
+before any paid transaction. Never implement blind
+autonomous payments without quota monitoring logic.
+
+### 3. Audit Trail
+
+Every sanitization is logged to a private Google Sheets
+ledger with: tx_hash, input character count (not content),
+sanitized output, safety score, risk category, timestamp.
+
+This provides full traceability for compliance reporting.
+The raw input text is never stored at any point.
+
+### 4. Operator Verification
+
+- **GitHub:** https://github.com/teodorofodocrispin-cmyk
+- **Repository:** https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer
+- **Health endpoint:** https://raw.githubusercontent.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer/main/health.json
+- **Contact:** teodorofodocrispin@gmail.com
+- **External audit score:** 9.8/10
+- **Autonomy score:** 8.5/10
+
+---
+
 ## When to use this skill
 
 Activate this skill when:
-- The agent needs to process user-generated text that may contain emails, passwords, private keys, phone numbers, addresses, or national IDs
-- Privacy compliance is required before passing content to an LLM provider (GDPR, LGPD, APPI, HIPAA, CCPA)
-- The agent is operating in a pipeline that handles sensitive data between services
-- The agent processes text in Spanish, Portuguese, German, or Japanese with country-specific PII formats
-- The agent needs autonomous budget management via quota_remaining field
+- The agent needs to process user-generated text that
+  may contain emails, passwords, private keys, phone
+  numbers, addresses, or national IDs
+- Privacy compliance is required before passing content
+  to an LLM provider (GDPR, LGPD, APPI, CCPA)
+- The agent processes text in Spanish, Portuguese,
+  German, or Japanese with country-specific PII formats
+- The agent needs autonomous budget management via
+  the quota_remaining field
+
+## When NOT to use this skill
+
+- Strict on-premise HIPAA environments requiring
+  zero data transmission to third parties
+- Environments where Make.com is not an approved
+  data processor
+- Use cases involving real private keys or passwords
+  in production (use TRIAL only for testing)
+
+---
 
 ## How it works
 
-1. Agent sends text + a Solana `tx_hash` to the TrustBoost webhook
+1. Agent sends text + a Solana `tx_hash` to the
+   TrustBoost webhook
 2. Helius oracle verifies the payment on Solana mainnet
-3. OpenAI GPT-4o-mini detects and redacts all PII in the input language
-4. Returns sanitized text + safety score + risk category + quota metrics
+3. OpenAI GPT-4o-mini detects and redacts all PII
+   in the input language
+4. Returns sanitized text + safety score + risk
+   category + quota metrics
+5. Only sanitized output is logged — never raw input
 
 ## Multilingual PII Support
 
-TrustBoost automatically detects the input language and applies country-specific patterns:
+TrustBoost automatically detects the input language
+and applies country-specific patterns:
 
 | Language | Region | PII Patterns |
 |----------|--------|--------------|
@@ -47,6 +155,8 @@ TrustBoost automatically detects the input language and applies country-specific
 | 🇧🇷🇵🇹 Portuguese | Brazil & Portugal | CPF, CNPJ, RG, NIF, NUS |
 | 🇩🇪 German | Germany/Austria/CH | Personalausweis, Steuernummer, IBAN DE |
 | 🇯🇵 Japanese | Japan | マイナンバー, 運転免許証, パスポート番号, 住所 |
+
+---
 
 ## API Request
 
@@ -70,8 +180,11 @@ TrustBoost automatically detects the input language and applies country-specific
 | **Trial** | `"TRIAL"` | Free | 50 sanitizations |
 | **Paid** | Real Solana tx hash | 149 USDC | 10,000 sanitizations |
 
-**To get a paid tx_hash:** Send exactly 149 USDC on Solana mainnet to:
+**To get a paid tx_hash:** Send exactly 149 USDC on
+Solana mainnet to:
 `giu4VciTkfWJNG1oeP6SzHEJwmabikJSMB91GaFNWE4`
+
+---
 
 ## API Response (Success 200)
 
@@ -107,7 +220,6 @@ TrustBoost automatically detects the input language and applies country-specific
   "request_id": "TRIAL",
   "code": "QUOTA_EXHAUSTED_OR_PAYMENT_REQUIRED",
   "message": "TRIAL quota exhausted or payment insufficient. Send 149 USDC on Solana to continue.",
-  "timestamp": "2026-04-23T12:00:00Z",
   "trial_info": {
     "quota_used": 50,
     "quota_limit": 50,
@@ -132,6 +244,8 @@ TrustBoost automatically detects the input language and applies country-specific
 }
 ```
 
+---
+
 ## Risk categories
 
 | Category | What gets redacted |
@@ -146,28 +260,14 @@ TrustBoost automatically detects the input language and applies country-specific
 - `0.5` — Moderate PII detected (emails, handles)
 - `1.0` — Critical PII detected (keys, passwords)
 
-## Autonomous budget management
+---
 
-Agents should monitor `quota_remaining` to self-manage budget:
-
-```python
-result = sanitize(text)
-if result["data"]["usage_metrics"]["quota_remaining"] < 10:
-    # Trigger autonomous payment flow
-    initiate_payment(
-        amount=149,
-        currency="USDC",
-        network="solana",
-        address="giu4VciTkfWJNG1oeP6SzHEJwmabikJSMB91GaFNWE4"
-    )
-```
-
-## Example usage — English
+## Example — English
 
 **Input:**
 ```json
 {
-  "text": "Contact John at john@example.com or call +1-555-0123. His API key is sk-abc123xyz.",
+  "text": "Contact John at john@example.com or +1-555-0123. API key: sk-abc123xyz.",
   "tx_hash": "TRIAL"
 }
 ```
@@ -175,26 +275,19 @@ if result["data"]["usage_metrics"]["quota_remaining"] < 10:
 **Output:**
 ```json
 {
-  "status": "success",
-  "data": {
-    "sanitized_content": "Contact [REDACTED] at [REDACTED] or call [REDACTED]. His API key is [REDACTED].",
-    "safety_score": 0.97,
-    "risk_category": "CRITICAL",
-    "entities_removed": true,
-    "usage_metrics": {
-      "quota_remaining": 49,
-      "quota_limit": 50
-    }
-  }
+  "sanitized_content": "Contact [REDACTED] at [REDACTED] or [REDACTED]. API key: [REDACTED].",
+  "safety_score": 0.97,
+  "risk_category": "CRITICAL",
+  "entities_removed": true
 }
 ```
 
-## Example usage — Spanish (LATAM)
+## Example — German
 
 **Input:**
 ```json
 {
-  "text": "Contacta a María López, RFC: LOPM880101ABC, tel: +52 55 1234 5678",
+  "text": "Hans Müller, Personalausweis: L01X00T47, IBAN: DE89 3704 0044 0532 0130 00, Tel: +49 89 1234 5678",
   "tx_hash": "TRIAL"
 }
 ```
@@ -202,17 +295,14 @@ if result["data"]["usage_metrics"]["quota_remaining"] < 10:
 **Output:**
 ```json
 {
-  "status": "success",
-  "data": {
-    "sanitized_content": "Contacta a [REDACTED], RFC: [REDACTED], tel: [REDACTED]",
-    "safety_score": 0.96,
-    "risk_category": "PRIVATE",
-    "entities_removed": true
-  }
+  "sanitized_content": "[REDACTED], Personalausweis: [REDACTED], IBAN: [REDACTED], Tel: [REDACTED]",
+  "safety_score": 0.98,
+  "risk_category": "CRITICAL",
+  "entities_removed": true
 }
 ```
 
-## Example usage — Japanese
+## Example — Japanese
 
 **Input:**
 ```json
@@ -225,28 +315,18 @@ if result["data"]["usage_metrics"]["quota_remaining"] < 10:
 **Output:**
 ```json
 {
-  "status": "success",
-  "data": {
-    "sanitized_content": "[REDACTED]、マイナンバー：[REDACTED]、電話：[REDACTED]",
-    "safety_score": 0.97,
-    "risk_category": "PRIVATE",
-    "entities_removed": true
-  }
+  "sanitized_content": "[REDACTED]、マイナンバー：[REDACTED]、電話：[REDACTED]",
+  "safety_score": 0.97,
+  "risk_category": "PRIVATE",
+  "entities_removed": true
 }
 ```
 
-## Privacy guarantee
+---
 
-Raw input text is never stored. Only the following metadata is logged to a private audit ledger:
-- `tx_hash` (public Solana transaction hash)
-- Character length of input (not the content)
-- Sanitized output
-- Safety score and risk category
-- Timestamp
+## External Evaluations
 
-## External evaluations
-
-- Autonomy Score: **8.5/10** — compatible with autonomous agent pipelines
+- Autonomy Score: **8.5/10** — compatible with autonomous pipelines
 - Blueprint Audit: **9.8/10** — production-ready architecture
 - Full report: https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer/blob/main/AGENT_EVALUATION.md
 
@@ -255,3 +335,4 @@ Raw input text is never stored. Only the following metadata is logged to a priva
 - GitHub: https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer
 - Health check: https://raw.githubusercontent.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer/main/health.json
 - Schema (molt.json): https://raw.githubusercontent.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer/main/molt.json
+- Make.com Privacy Policy: https://www.make.com/en/privacy-notice
