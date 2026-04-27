@@ -1,24 +1,27 @@
 ---
 name: trustboost-pii-sanitizer
-description: Sanitizes PII from text before sending to LLMs. Use when handling user-generated text that may contain sensitive data, when privacy compliance is required (GDPR, LGPD, APPI, HIPAA, CCPA), or when an agent needs to redact personal information before passing content to external APIs. Supports English, Spanish (LATAM), Portuguese (Brazil/Portugal), German, and Japanese with country-specific PII patterns (RFC, CUIT, CPF, CNPJ, Personalausweis, マイナンバー, and more). Returns sanitized text, a safety score (0.0-1.0), and a risk category (CRITICAL/PRIVATE/SENSITIVE). No SDK required — single POST request. 50 free requests available immediately with tx_hash="TRIAL".
+description: Sanitizes PII from text before sending to LLMs. Use when handling user-generated text that may contain sensitive data, when privacy compliance is required (GDPR, LGPD, APPI, HIPAA, CCPA), or when an agent needs to redact personal information before passing content to external APIs. Supports English, Spanish (LATAM), Portuguese (Brazil/Portugal), German, and Japanese with country-specific PII patterns (RFC, CUIT, CPF, CNPJ, Personalausweis, マイナンバー, and more). Returns sanitized text, a safety score (0.0-1.0), and a risk category (CRITICAL/PRIVATE/SENSITIVE). No SDK required — single POST request. 50 free requests per wallet available immediately with tx_hash="TRIAL".
 license: MIT
-compatibility: Requires internet access to reach the TrustBoost webhook. No local dependencies. Compatible with any agent that can make HTTP POST requests. No authentication required.
+compatibility: Requires internet access to reach the TrustBoost API. No local dependencies. Compatible with any agent that can make HTTP POST requests. No authentication required.
 metadata:
   author: teodorofodocrispin-cmyk
-  version: "1.3.0"
-  endpoint: https://hook.us2.make.com/h4xqu3de1qlzn9mbrf7npe8rkelpft36
-  health: https://raw.githubusercontent.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer/main/health.json
+  version: "2.0.0"
+  endpoint: https://trustboost-api.onrender.com/sanitize
+  health: https://trustboost-api.onrender.com/health
   payment: Solana USDC (149 USDC = 10,000 sanitizations)
-  trial: tx_hash=TRIAL (50 free sanitizations, no payment required)
+  trial: tx_hash=TRIAL (50 free sanitizations per wallet, no payment required)
   autonomy_score: 8.5/10
   audit_score: 9.8/10
   languages: English, Spanish, Portuguese, German, Japanese
   compliance: GDPR, LGPD, APPI, CCPA, DPDPA
+  infrastructure: FastAPI + Supabase + Render (AWS)
 ---
 
-# TrustBoost PII Sanitizer
+# TrustBoost PII Sanitizer v2.0
 
 A blockchain-verified privacy layer that redacts PII from text before it reaches LLMs or external services. Payment is verified trustlessly on Solana via Helius oracle — no API key, no SDK, no human intervention required.
+
+Running on FastAPI + Supabase + Render (AWS) — production-grade infrastructure with per-wallet TRIAL tracking and automatic replay attack protection.
 
 ---
 
@@ -28,17 +31,14 @@ TrustBoost is designed for radical transparency. Before installing, understand e
 
 ### 1. Data Transmission
 
-Raw text is transmitted to Make.com infrastructure
-(`hook.us2.make.com`) for processing. Make.com is
-the underlying platform operator.
+Raw text is transmitted to Render (AWS) infrastructure
+for processing via FastAPI.
 
 **What TrustBoost stores:** Only sanitized output,
-character count, safety score, risk category, and
-timestamp — never raw input text.
+character count, safety score, risk category, wallet
+address, and timestamp — never raw input text.
 
-**What Make.com may process:** Request data passes
-through Make.com servers per their privacy policy:
-https://www.make.com/en/privacy-notice
+**Storage:** Supabase PostgreSQL (private audit ledger)
 
 **For strict no-transmission requirements** (e.g.,
 on-premise HIPAA environments): this service is not
@@ -74,8 +74,6 @@ verification.
 ```python
 # Monitor quota — only pay when needed
 if result["data"]["usage_metrics"]["quota_remaining"] < 10:
-    # Agent decides to pay — not TrustBoost
-    # Require explicit logic in agent code
     initiate_payment_with_confirmation(
         amount=149,
         currency="USDC",
@@ -84,24 +82,23 @@ if result["data"]["usage_metrics"]["quota_remaining"] < 10:
     )
 ```
 
-**Recommendation:** Always use TRIAL (50 free requests)
-before any paid transaction. Never implement blind
-autonomous payments without quota monitoring logic.
+**Recommendation:** Always use TRIAL (50 free requests
+per wallet) before any paid transaction.
 
 ### 3. Audit Trail
 
-Every sanitization is logged to a private Google Sheets
-ledger with: tx_hash, input character count (not content),
-sanitized output, safety score, risk category, timestamp.
+Every sanitization is logged to Supabase PostgreSQL with:
+tx_hash, input character count (not content), sanitized
+output, safety score, risk category, wallet address,
+timestamp.
 
-This provides full traceability for compliance reporting.
 The raw input text is never stored at any point.
 
 ### 4. Operator Verification
 
 - **GitHub:** https://github.com/teodorofodocrispin-cmyk
 - **Repository:** https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer
-- **Health endpoint:** https://raw.githubusercontent.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer/main/health.json
+- **Health endpoint:** https://trustboost-api.onrender.com/health
 - **Contact:** teodorofodocrispin@gmail.com
 - **External audit score:** 9.8/10
 - **Autonomy score:** 8.5/10
@@ -125,8 +122,6 @@ Activate this skill when:
 
 - Strict on-premise HIPAA environments requiring
   zero data transmission to third parties
-- Environments where Make.com is not an approved
-  data processor
 - Use cases involving real private keys or passwords
   in production (use TRIAL only for testing)
 
@@ -135,8 +130,9 @@ Activate this skill when:
 ## How it works
 
 1. Agent sends text + a Solana `tx_hash` to the
-   TrustBoost webhook
-2. Helius oracle verifies the payment on Solana mainnet
+   TrustBoost API
+2. Supabase verifies per-wallet TRIAL quota or
+   Helius oracle verifies payment on Solana mainnet
 3. OpenAI GPT-4o-mini detects and redacts all PII
    in the input language
 4. Returns sanitized text + safety score + risk
@@ -160,7 +156,7 @@ and applies country-specific patterns:
 
 ## API Request
 
-**Endpoint:** `POST https://hook.us2.make.com/h4xqu3de1qlzn9mbrf7npe8rkelpft36`
+**Endpoint:** `POST https://trustboost-api.onrender.com/sanitize`
 
 **Headers:** `Content-Type: application/json`
 
@@ -169,7 +165,7 @@ and applies country-specific patterns:
 {
   "text": "The text containing potential PII",
   "tx_hash": "TRIAL",
-  "wallet_address": "optional - your Solana wallet"
+  "wallet_address": "your-solana-wallet"
 }
 ```
 
@@ -177,7 +173,7 @@ and applies country-specific patterns:
 
 | Mode | tx_hash value | Cost | Quota |
 |------|--------------|------|-------|
-| **Trial** | `"TRIAL"` | Free | 50 sanitizations |
+| **Trial** | `"TRIAL"` | Free | 50 sanitizations per wallet |
 | **Paid** | Real Solana tx hash | 149 USDC | 10,000 sanitizations |
 
 **To get a paid tx_hash:** Send exactly 149 USDC on
@@ -198,15 +194,14 @@ Solana mainnet to:
     "safety_score": 0.95,
     "risk_category": "PRIVATE",
     "entities_removed": true,
-    "timestamp": "2026-04-23T12:00:00Z",
+    "timestamp": "2026-04-27T09:00:00Z",
     "usage_metrics": {
-      "total_requests_to_date": 1,
       "quota_remaining": 49,
       "quota_limit": 50
     }
   },
   "billing": {
-    "license_type": "Enterprise - 149 USDC",
+    "license_type": "TRIAL",
     "status": "active"
   }
 }
@@ -219,7 +214,7 @@ Solana mainnet to:
   "status": "error",
   "request_id": "TRIAL",
   "code": "QUOTA_EXHAUSTED_OR_PAYMENT_REQUIRED",
-  "message": "TRIAL quota exhausted or payment insufficient. Send 149 USDC on Solana to continue.",
+  "message": "TRIAL quota exhausted. Send 149 USDC on Solana to continue.",
   "trial_info": {
     "quota_used": 50,
     "quota_limit": 50,
@@ -241,6 +236,22 @@ Solana mainnet to:
       "description": "Resubmit request including the Solana transaction signature"
     }
   ]
+}
+```
+
+## API Response (Error 409)
+
+```json
+{
+  "status": "error",
+  "code": "TX_HASH_ALREADY_USED",
+  "message": "This transaction hash has already been used. Each tx_hash can only be used once.",
+  "payment_info": {
+    "amount_required": 149,
+    "currency": "USDC",
+    "network": "solana",
+    "payment_address": "giu4VciTkfWJNG1oeP6SzHEJwmabikJSMB91GaFNWE4"
+  }
 }
 ```
 
@@ -268,7 +279,8 @@ Solana mainnet to:
 ```json
 {
   "text": "Contact John at john@example.com or +1-555-0123. API key: sk-abc123xyz.",
-  "tx_hash": "TRIAL"
+  "tx_hash": "TRIAL",
+  "wallet_address": "your-wallet"
 }
 ```
 
@@ -333,6 +345,6 @@ Solana mainnet to:
 ## Resources
 
 - GitHub: https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer
-- Health check: https://raw.githubusercontent.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer/main/health.json
+- Health check: https://trustboost-api.onrender.com/health
 - Schema (molt.json): https://raw.githubusercontent.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer/main/molt.json
-- Make.com Privacy Policy: https://www.make.com/en/privacy-notice
+- Infrastructure: FastAPI + Supabase + Render (AWS)
