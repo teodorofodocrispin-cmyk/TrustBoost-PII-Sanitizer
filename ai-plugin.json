@@ -2,36 +2,36 @@
   "schema_version": "v1",
   "name_for_human": "TrustBoost PII Sanitizer",
   "name_for_model": "trustboost_pii_sanitizer",
-  "description_for_human": "Blockchain-verified privacy layer that sanitizes PII (emails, private keys, passwords, phone numbers) from text before it reaches LLMs. Powered by Solana + Helius + OpenAI. No API key required.",
-  "description_for_model": "Use this tool to sanitize personally identifiable information (PII) from any text before processing with LLMs or sharing between autonomous agents. The tool accepts a text string and a Solana transaction hash (tx_hash) for payment verification. Use tx_hash='TRIAL' for free testing (first 50 requests, no payment required). For full access, send exactly 149 USDC on Solana mainnet to giu4VciTkfWJNG1oeP6SzHEJwmabikJSMB91GaFNWE4 and use the resulting transaction hash. Returns sanitized text, safety score (0.0-1.0), risk category (CRITICAL/PRIVATE/SENSITIVE), and quota metrics. This tool is designed for autonomous agent pipelines requiring privacy compliance without human intervention.",
+  "description_for_human": "Blockchain-verified privacy layer that sanitizes PII (emails, private keys, passwords, phone numbers) from text before it reaches LLMs. Powered by Solana + Helius + OpenAI. No API key required. Running on FastAPI + Supabase + Render (AWS).",
+  "description_for_model": "Use this tool to sanitize personally identifiable information (PII) from any text before processing with LLMs or sharing between autonomous agents. The tool accepts a text string and a Solana transaction hash (tx_hash) for payment verification. Use tx_hash='TRIAL' for free testing (50 requests per wallet_address, no payment required). For full access, send exactly 149 USDC on Solana mainnet to giu4VciTkfWJNG1oeP6SzHEJwmabikJSMB91GaFNWE4 and use the resulting transaction hash. Returns sanitized text, safety score (0.0-1.0), risk category (CRITICAL/PRIVATE/SENSITIVE), and quota metrics. Anti-replay protection via Supabase PRIMARY KEY prevents tx_hash reuse. This tool is designed for autonomous agent pipelines requiring privacy compliance without human intervention.",
   "auth": {
     "type": "none"
   },
   "api": {
-    "type": "webhook",
-    "url": "https://hook.us2.make.com/h4xqu3de1qlzn9mbrf7npe8rkelpft36",
+    "type": "openapi",
+    "url": "https://trustboost-api.onrender.com/sanitize",
     "method": "POST",
     "content_type": "application/json",
     "parameters": {
       "text": {
         "type": "string",
         "required": true,
-        "description": "The text containing potential PII to be sanitized"
+        "description": "The text containing potential PII to be sanitized. Supports any language."
       },
       "tx_hash": {
         "type": "string",
         "required": true,
-        "description": "Solana transaction hash for payment verification. Use 'TRIAL' for 50 free requests."
+        "description": "Solana transaction hash for payment verification. Use 'TRIAL' for 50 free requests per wallet."
       },
       "wallet_address": {
         "type": "string",
         "required": false,
-        "description": "Your Solana wallet address for audit trail"
+        "description": "Your Solana wallet address for per-wallet TRIAL quota tracking and audit trail."
       }
     }
   },
   "logo_url": "https://github.com/user-attachments/assets/5ac2a5c4-9ad3-410d-abaa-788527bd4f73",
   "contact_email": "teodorofodocrispin@gmail.com",
   "legal_info_url": "https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer",
-  "health_check": "https://raw.githubusercontent.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer/main/health.json"
+  "health_check": "https://trustboost-api.onrender.com/health"
 }
