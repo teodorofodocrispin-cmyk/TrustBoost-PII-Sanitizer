@@ -107,8 +107,8 @@
     "DPDPA"
   ],
   "endpoints": {
-    "api": "https://trustboost-api.onrender.com/sanitize",
-    "health": "https://trustboost-api.onrender.com/health",
+    "api": "https://api.trustboost.dev/sanitize",
+    "health": "https://api.trustboost.dev/health",
     "repository": "https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer",
     "skill": "https://raw.githubusercontent.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer/main/SKILL.md"
   },
