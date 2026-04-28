@@ -7,5 +7,5 @@
   "response_time_ms": 200,
   "message": "All systems operational",
   "infrastructure": "FastAPI + Supabase + Render (AWS)",
-  "endpoint": "https://trustboost-api.onrender.com/sanitize"
+  "endpoint": "https://api.trustboost.dev/sanitize"
 }
