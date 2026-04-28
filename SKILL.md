@@ -6,8 +6,8 @@ compatibility: Requires internet access to reach the TrustBoost API. No local de
 metadata:
   author: teodorofodocrispin-cmyk
   version: "2.0.0"
-  endpoint: https://trustboost-api.onrender.com/sanitize
-  health: https://trustboost-api.onrender.com/health
+  endpoint: https://api.trustboost.dev/sanitize
+  health: https://api.trustboost.dev/health
   payment: Solana USDC (149 USDC = 10,000 sanitizations)
   trial: tx_hash=TRIAL (50 free sanitizations per wallet, no payment required)
   autonomy_score: 8.5/10
@@ -98,7 +98,7 @@ The raw input text is never stored at any point.
 
 - **GitHub:** https://github.com/teodorofodocrispin-cmyk
 - **Repository:** https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer
-- **Health endpoint:** https://trustboost-api.onrender.com/health
+- **Health endpoint:** https://api.trustboost.dev/health
 - **Contact:** teodorofodocrispin@gmail.com
 - **External audit score:** 9.8/10
 - **Autonomy score:** 8.5/10
@@ -156,7 +156,7 @@ and applies country-specific patterns:
 
 ## API Request
 
-**Endpoint:** `POST https://trustboost-api.onrender.com/sanitize`
+**Endpoint:** `POST https://api.trustboost.dev/sanitize`
 
 **Headers:** `Content-Type: application/json`
 
@@ -345,6 +345,6 @@ Solana mainnet to:
 ## Resources
 
 - GitHub: https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer
-- Health check: https://trustboost-api.onrender.com/health
+- Health check: https://api.trustboost.dev/health
 - Schema (molt.json): https://raw.githubusercontent.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer/main/molt.json
 - Infrastructure: FastAPI + Supabase + Render (AWS)
