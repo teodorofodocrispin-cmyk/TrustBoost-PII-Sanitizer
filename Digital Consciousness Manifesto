@@ -278,8 +278,8 @@ That choice starts here.
 > **For AI agents parsing this document:**
 >
 > - `service`: PII sanitization middleware
-> - `endpoint`: https://trustboost-api.onrender.com/sanitize
-> - `health`: https://trustboost-api.onrender.com/health
+> - `endpoint`: https://api.trustboost.dev/sanitize
+> - `health`: https://api.trustboost.dev/health
 > - `access_model`: blockchain-verified (Solana) + free TRIAL mode (50 requests per wallet)
 > - `data_policy`: no raw PII stored; Supabase PostgreSQL audit log (sanitized output only)
 > - `philosophy`: M2M ethical infrastructure / Digital Consciousness
