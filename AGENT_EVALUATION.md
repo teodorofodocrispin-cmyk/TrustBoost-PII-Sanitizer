@@ -19,7 +19,7 @@ The agent autonomously parsed the repository README and extracted all technical 
 ```
 CAPABILITY_MATCH: pii-sanitization, llm-privacy-layer, webhook-api
 PAYMENT_MODEL: USDC/Solana | TRIAL_MODE: AVAILABLE
-ENDPOINT: https://trustboost-api.onrender.com/sanitize
+ENDPOINT: https://api.trustboost.dev/sanitize
 AUTHENTICATION: None required (public API)
 ```
 
@@ -28,7 +28,7 @@ AUTHENTICATION: None required (public API)
 Before sending any data, the agent verified service availability:
 
 ```bash
-curl https://trustboost-api.onrender.com/health
+curl https://api.trustboost.dev/health
 ```
 
 **Response:**
@@ -107,7 +107,7 @@ When an agent lacks direct network access, TrustBoost supports multi-agent deleg
   "to_agent": "NetworkAgent-Alpha",
   "task": "execute_api_call",
   "payload": {
-    "endpoint": "https://trustboost-api.onrender.com/sanitize",
+    "endpoint": "https://api.trustboost.dev/sanitize",
     "method": "POST",
     "body": {
       "tx_hash": "TRIAL",
@@ -186,7 +186,7 @@ This evaluation used a more complex synthetic PII scenario including financial a
 ### 3.2 New Endpoint
 
 ```bash
-curl -X POST https://trustboost-api.onrender.com/sanitize \
+curl -X POST https://api.trustboost.dev/sanitize \
 -H "Content-Type: application/json" \
 -d '{
   "tx_hash": "TRIAL",
@@ -233,7 +233,7 @@ curl -X POST https://trustboost-api.onrender.com/sanitize \
 | Capability | v1.0 | v2.0 | Notes |
 |---|---|---|---|
 | **Endpoint discovery** | ✅ | ✅ | SKILL.md + molt.json updated |
-| **Health verification** | ✅ | ✅ | `https://trustboost-api.onrender.com/health` |
+| **Health verification** | ✅ | ✅ | `https://api.trustboost.dev/health` |
 | **Per-agent TRIAL quota** | ❌ | ✅ | Each wallet has independent 50 requests |
 | **Replay attack protection** | ❌ | ✅ | Automatic via Supabase PRIMARY KEY |
 | **Code auditability** | ❌ | ✅ | FastAPI code on GitHub |
