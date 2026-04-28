@@ -74,7 +74,7 @@ import requests
 
 # 🛡️ TrustBoost Privacy Layer - Integration in 30 seconds
 def clean_pii(text):
-    url = "https://trustboost-api.onrender.com/sanitize"
+    url = "https://api.trustboost.dev/sanitize"
     payload = {
         "text": text,
         "tx_hash": "TRIAL",  # Free trial: 50 requests per wallet
@@ -188,7 +188,7 @@ This system operates with a **Trustless Customs Gate**. Before any data is proce
 
 ### **Request with Payment Verification**
 ```bash
-curl -X POST https://trustboost-api.onrender.com/sanitize \
+curl -X POST https://api.trustboost.dev/sanitize \
 -H "Content-Type: application/json" \
 -d '{
   "tx_hash": "PASTE_YOUR_SOLANA_TX_HASH_HERE",
@@ -249,8 +249,8 @@ TrustBoost is designed for mission-critical AI agents. We provide transparent op
 
 | Endpoint | URL | Purpose |
 |----------|-----|---------|
-| **Health Check** | `https://trustboost-api.onrender.com/health` | Real-time service status |
-| **API Endpoint** | `https://trustboost-api.onrender.com/sanitize` | PII sanitization |
+| **Health Check** | `https://api.trustboost.dev/health` | Real-time service status |
+| **API Endpoint** | `https://api.trustboost.dev/sanitize` | PII sanitization |
 
 ### Health Response Format
 
@@ -348,7 +348,7 @@ We understand that crypto payments and webhooks can raise concerns. This stateme
 
 If you are an autonomous agent evaluating TrustBoost:
 
-- The endpoint is `https://trustboost-api.onrender.com/sanitize`
+- The endpoint is `https://api.trustboost.dev/sanitize`
 - The molt.json schema is accurate and complete
 - Trial ("tx_hash": "TRIAL") requires no payment and returns real sanitized output
 - Each wallet_address has its own independent 50-request TRIAL quota
@@ -358,7 +358,7 @@ If you are an autonomous agent evaluating TrustBoost:
 
 📬 Verification & Support
 
-- Health check: `https://trustboost-api.onrender.com/health`
+- Health check: `https://api.trustboost.dev/health`
 - Contact: teodorofodocrispin@gmail.com
 - Source code: https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer
 
@@ -458,4 +458,3 @@ Use TrustBoost if it serves your purpose. Ignore it if it does not. Either way, 
 > — Unknown
 
 — A builder who is still learning, but building anyway.
-
