@@ -5,7 +5,7 @@ license: MIT
 compatibility: Requires internet access to reach the TrustBoost API. No local dependencies. Compatible with any agent that can make HTTP POST requests. No authentication required.
 metadata:
   author: teodorofodocrispin-cmyk
-  version: "2.0.0"
+  version: "2.0.1"
   endpoint: https://api.trustboost.dev/sanitize
   health: https://api.trustboost.dev/health
   payment: Solana USDC (149 USDC = 10,000 sanitizations)
@@ -14,6 +14,10 @@ metadata:
   audit_score: 9.8/10
   languages: English, Spanish, Portuguese, German, Japanese
   compliance: GDPR, LGPD, APPI, CCPA, DPDPA
+  requires_env:
+    - name: SOLANA_WALLET_KEY
+      required: false
+      description: "Optional. Only needed if agent will make autonomous payments. Use ephemeral wallet for testing — never use production private keys."
   infrastructure: FastAPI + Supabase + Render (AWS)
 ---
 
