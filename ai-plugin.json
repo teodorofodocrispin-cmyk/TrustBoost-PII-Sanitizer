@@ -9,7 +9,7 @@
   },
   "api": {
     "type": "openapi",
-    "url": "https://trustboost-api.onrender.com/sanitize",
+    "url": "https://api.trustboost.dev/sanitize",
     "method": "POST",
     "content_type": "application/json",
     "parameters": {
@@ -33,5 +33,5 @@
   "logo_url": "https://github.com/user-attachments/assets/5ac2a5c4-9ad3-410d-abaa-788527bd4f73",
   "contact_email": "teodorofodocrispin@gmail.com",
   "legal_info_url": "https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer",
-  "health_check": "https://trustboost-api.onrender.com/health"
+  "health_check": "https://api.trustboost.dev/health"
 }
