@@ -5,7 +5,7 @@ license: MIT
 compatibility: Requires internet access to reach the TrustBoost API. No local dependencies. Compatible with any agent that can make HTTP POST requests. No authentication required.
 metadata:
   author: teodorofodocrispin-cmyk
-  version: "2.0.3"
+  version: "2.0.4"
   endpoint: https://api.trustboost.dev/sanitize
   health: https://api.trustboost.dev/health
   payment: Solana USDC (149 USDC = 10,000 sanitizations)
@@ -346,9 +346,17 @@ Solana mainnet to:
 
 ## External Evaluations
 
-- Autonomy Score: **8.5/10** — compatible with autonomous pipelines
-- Blueprint Audit: **9.8/10** — production-ready architecture
+- Autonomy Score: **8.5/10** — AI evaluation, not a certified security audit
+- Blueprint Audit: **9.8/10** — AI evaluation, not a certified security audit
+- Independent security audit: **pending** — this project has not been audited by a certified security firm. See the Manifesto for honest disclosure.
 - Full report: https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer/blob/main/AGENT_EVALUATION.md
+
+## Known Limitations
+
+- **Prompt injection risk:** Malicious text containing instructions like "Ignore previous instructions" could potentially bypass PII redaction. temperature=0 and strict JSON-only output reduce this risk but do not eliminate it entirely.
+- **Not suitable for zero-transmission environments:** Raw text is sent to api.trustboost.dev before sanitization occurs.
+- **TRIAL is trust-based:** Per-wallet quota tracking is not cryptographically verified.
+- **No certified audit:** Evaluation scores are AI-generated, not from a certified security firm.
 
 ## Resources
 
