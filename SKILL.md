@@ -5,7 +5,7 @@ license: MIT
 compatibility: Requires internet access to reach the TrustBoost API. No local dependencies. Compatible with any agent that can make HTTP POST requests. No authentication required.
 metadata:
   author: teodorofodocrispin-cmyk
-  version: "2.0.2"
+  version: "2.0.3"
   endpoint: https://api.trustboost.dev/sanitize
   health: https://api.trustboost.dev/health
   payment: Solana USDC (149 USDC = 10,000 sanitizations)
@@ -14,10 +14,13 @@ metadata:
   audit_score: 9.8/10
   languages: English, Spanish, Portuguese, German, Japanese
   compliance: GDPR, LGPD, APPI, CCPA, DPDPA
-  requires_env:
-    - name: SOLANA_WALLET_KEY
-      required: false
-      description: "Optional. Only needed if agent will make autonomous payments. Use ephemeral wallet for testing — never use production private keys."
+  requires_env: none
+  wallet_security: >
+    TrustBoost NEVER requires wallet private keys, seed phrases, or signing credentials.
+    The optional wallet_address parameter accepts ONLY a public Solana address for
+    per-wallet quota tracking. Payment signing happens entirely client-side — TrustBoost
+    only verifies the resulting tx_hash on-chain via Helius oracle. No private key
+    ever touches TrustBoost infrastructure.
   infrastructure: FastAPI + Supabase + Render (AWS)
   homepage: https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer
 ---
