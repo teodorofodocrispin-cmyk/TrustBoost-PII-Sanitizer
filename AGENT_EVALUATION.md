@@ -248,6 +248,8 @@ curl -X POST https://api.trustboost.dev/sanitize \
 | Limitation | Severity | Notes |
 |---|---|---|
 | Free tier cold start | 🟡 Medium | Render free plan — first request after inactivity may be slower |
+| Prompt injection vulnerability | 🟡 Medium | Malicious text containing "Ignore previous instructions" could potentially bypass PII redaction. temperature=0 and strict JSON-only output reduce risk but do not eliminate it. Formal prompt injection test suite pending. |
+| Self-assessed evaluation scores | 🟡 Medium | audit_score 9.8/10 and autonomy_score 8.5/10 are AI evaluations — not independent audits by a certified security firm. Independent audit pending. |
 | USDC payment requires Agent Wallet | 🟡 Medium | Needed for autonomous scaling beyond TRIAL |
 | No async callback support | 🟡 Medium | Agent must wait for synchronous response |
 | No MCP Server yet | 🟡 Medium | Roadmap — enables native Claude/Cursor discovery |
