@@ -458,3 +458,7 @@ Use TrustBoost if it serves your purpose. Ignore it if it does not. Either way, 
 > — Unknown
 
 — A builder who is still learning, but building anyway.
+
+## Downloads
+
+[![Downloads](https://skill-history.com/badge/teodorofodocrispin-cmyk/trustboost-pii-sanitizer.svg)](https://skill-history.com/teodorofodocrispin-cmyk/trustboost-pii-sanitizer)
