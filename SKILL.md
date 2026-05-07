@@ -10,6 +10,7 @@ metadata:
   health: https://api.trustboost.dev/health
   payment: Solana USDC (149 USDC = 10,000 sanitizations)
   trial: tx_hash=TRIAL (50 free sanitizations per wallet, no payment required)
+  preview: https://api.trustboost.dev/sanitize/preview (3 free requests per IP, no wallet required)
   autonomy_score: 8.5/10
   audit_score: 9.8/10
   languages: English, Spanish, Portuguese, German, Japanese
@@ -159,6 +160,30 @@ and applies country-specific patterns:
 | 🇧🇷🇵🇹 Portuguese | Brazil & Portugal | CPF, CNPJ, RG, NIF, NUS |
 | 🇩🇪 German | Germany/Austria/CH | Personalausweis, Steuernummer, IBAN DE |
 | 🇯🇵 Japanese | Japan | マイナンバー, 運転免許証, パスポート番号, 住所 |
+
+---
+
+## Try it in 10 seconds — no wallet needed
+
+```bash
+curl -X POST https://api.trustboost.dev/sanitize/preview \
+  -H "Content-Type: application/json" \
+  -d '{"text": "My name is John Doe, email john@gmail.com, SSN 123-45-6789"}'
+```
+
+```json
+{
+  "sanitized_content": "My name is [REDACTED], email [REDACTED], SSN [REDACTED]",
+  "safety_score": 0.6,
+  "risk_category": "PRIVATE",
+  "demo": true,
+  "requests_remaining": 2,
+  "next": "https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer#trial"
+}
+```
+
+3 free previews per IP · no account · no wallet · no setup.
+Ready for more? 50 free sanitizations with a Solana wallet using `tx_hash="TRIAL"`.
 
 ---
 
