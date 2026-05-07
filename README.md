@@ -65,6 +65,30 @@ TrustBoost helps AI agents and their operators comply with data protection regul
 
 > *TrustBoost is not a legal substitute for full compliance. It is a technical layer that reduces risk and demonstrates due diligence.*
 
+## ⚡ Try it in 10 seconds — no wallet needed
+
+```bash
+curl -X POST https://api.trustboost.dev/sanitize/preview \
+  -H "Content-Type: application/json" \
+  -d '{"text": "My name is John Doe, email john@gmail.com, SSN 123-45-6789"}'
+```
+
+```json
+{
+  "sanitized_content": "My name is [REDACTED], email [REDACTED], SSN [REDACTED]",
+  "safety_score": 0.6,
+  "risk_category": "PRIVATE",
+  "demo": true,
+  "requests_remaining": 2,
+  "next": "https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer#trial"
+}
+```
+
+3 free previews per IP · no account · no wallet · no setup.
+Ready for more? See Trial mode below — 50 free sanitizations with a Solana wallet.
+
+---
+
 ## ⚡ Quick Start (Trial)
 
 You don't need a license to start. Use the TRIAL token to test the API immediately:

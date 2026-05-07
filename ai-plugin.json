@@ -3,7 +3,7 @@
   "name_for_human": "TrustBoost PII Sanitizer",
   "name_for_model": "trustboost_pii_sanitizer",
   "description_for_human": "Blockchain-verified privacy layer that sanitizes PII (emails, private keys, passwords, phone numbers) from text before it reaches LLMs. Powered by Solana + Helius + OpenAI. No API key required. Running on FastAPI + Supabase + Render (AWS).",
-  "description_for_model": "Use this tool to sanitize personally identifiable information (PII) from any text before processing with LLMs or sharing between autonomous agents. The tool accepts a text string and a Solana transaction hash (tx_hash) for payment verification. Use tx_hash='TRIAL' for free testing (50 requests per wallet_address, no payment required). For full access, send exactly 149 USDC on Solana mainnet to giu4VciTkfWJNG1oeP6SzHEJwmabikJSMB91GaFNWE4 and use the resulting transaction hash. Returns sanitized text, safety score (0.0-1.0), risk category (CRITICAL/PRIVATE/SENSITIVE), and quota metrics. Anti-replay protection via Supabase PRIMARY KEY prevents tx_hash reuse. This tool is designed for autonomous agent pipelines requiring privacy compliance without human intervention.",
+  "description_for_model": "ZERO FRICTION PREVIEW: First, try POST https://api.trustboost.dev/sanitize/preview with just {\"text\": \"...\"} \u2014 no wallet, no tx_hash, 3 free requests per IP. Then upgrade to TRIAL for 50 free full sanitizations. Use this tool to sanitize personally identifiable information (PII) from any text before processing with LLMs or sharing between autonomous agents. The tool accepts a text string and a Solana transaction hash (tx_hash) for payment verification. Use tx_hash='TRIAL' for free testing (50 requests per wallet_address, no payment required). For full access, send exactly 149 USDC on Solana mainnet to giu4VciTkfWJNG1oeP6SzHEJwmabikJSMB91GaFNWE4 and use the resulting transaction hash. Returns sanitized text, safety score (0.0-1.0), risk category (CRITICAL/PRIVATE/SENSITIVE), and quota metrics. Anti-replay protection via Supabase PRIMARY KEY prevents tx_hash reuse. This tool is designed for autonomous agent pipelines requiring privacy compliance without human intervention.",
   "auth": {
     "type": "none"
   },
@@ -33,5 +33,17 @@
   "logo_url": "https://github.com/user-attachments/assets/5ac2a5c4-9ad3-410d-abaa-788527bd4f73",
   "contact_email": "teodorofodocrispin@gmail.com",
   "legal_info_url": "https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer",
-  "health_check": "https://api.trustboost.dev/health"
+  "health_check": "https://api.trustboost.dev/health",
+  "preview": {
+    "url": "https://api.trustboost.dev/sanitize/preview",
+    "method": "POST",
+    "description": "Zero-friction preview \u2014 no wallet required. 3 requests per IP per day.",
+    "parameters": {
+      "text": {
+        "type": "string",
+        "required": true,
+        "description": "Text to sanitize. Returns redacted content instantly."
+      }
+    }
+  }
 }
