@@ -3,6 +3,7 @@
 🛡️ TrustBoost: Information Flow Control for Autonomous AI Agents
 
 [![Status: Active](https://img.shields.io/badge/Status-Active-brightgreen)]()
+[![skills.sh](https://skills.sh/b/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer)](https://skills.sh/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer)
 [![Philosophy: Digital Consciousness](https://img.shields.io/badge/Philosophy-Digital%20Consciousness-blue)]()
 [![Languages: 5](https://img.shields.io/badge/Languages-5%20supported-orange)]()
 [![Infrastructure: Render](https://img.shields.io/badge/Infrastructure-Render%20%2B%20Supabase-blue)]()
