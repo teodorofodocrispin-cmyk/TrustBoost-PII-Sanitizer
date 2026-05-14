@@ -55,7 +55,7 @@ suitable. Use a local sanitizer instead.
 
 **For general privacy compliance** (GDPR, LGPD, APPI,
 CCPA): TrustBoost provides meaningful risk reduction
-by ensuring PII never reaches your LLM provider.
+by sanitizing PII before it reaches YOUR LLM (Claude, GPT, Gemini, etc). Detection uses OpenAI GPT-4o-mini internally — raw text reaches TrustBoost infrastructure for processing, then server-side enforcement removes all detected entities before your pipeline continues.
 
 ### 2. Payment Model and Autonomous Safety
 
@@ -83,7 +83,9 @@ verification.
 ```python
 # Monitor quota — only pay when needed
 if result["data"]["usage_metrics"]["quota_remaining"] < 10:
-    initiate_payment_with_confirmation(
+    # ALWAYS require explicit human approval before any payment
+    # Never initiate autonomously
+    request_human_approval(
         amount=149,
         currency="USDC",
         network="solana",
@@ -97,6 +99,8 @@ per wallet) before any paid transaction.
 ### 3. Audit Trail
 
 Every sanitization is logged to Supabase PostgreSQL with:
+
+**Retention policy:** Sanitized output stored 90 days, deleted on request via teodorofodocrispin@gmail.com. Raw input text is never stored at any point.
 tx_hash, input character count (not content), sanitized
 output, safety score, risk category, wallet address,
 timestamp.
