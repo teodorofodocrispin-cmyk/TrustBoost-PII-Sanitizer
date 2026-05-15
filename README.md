@@ -486,4 +486,4 @@ Use TrustBoost if it serves your purpose. Ignore it if it does not. Either way, 
 
 ## Downloads
 
-[![Downloads](https://skill-history.com/badge/teodorofodocrispin-cmyk/trustboost-pii-sanitizer.svg)](https://skill-history.com/teodorofodocrispin-cmyk/trustboost-pii-sanitizer)
+[![Downloads](https://img.shields.io/badge/ClawHub-300%2B%20downloads-brightgreen)](https://clawhub.ai/teodorofodocrispin-cmyk/trustboost-pii-sanitizer)
