@@ -1,11 +1,18 @@
 {
   "status": "ok",
   "timestamp": "2026-04-27 09:00:00",
-  "version": "2.0.0",
+  "version": "2.5.0",
   "service": "TrustBoost-PII-Sanitizer",
   "uptime_percent": 99.92,
   "response_time_ms": 200,
   "message": "All systems operational",
   "infrastructure": "FastAPI + Supabase + Render (AWS)",
-  "endpoint": "https://api.trustboost.dev/sanitize"
+  "endpoint": "https://api.trustboost.dev/sanitize",
+  "features": [
+    "context_aware_sanitization",
+    "privacy_budget_per_agent",
+    "trustboost_score",
+    "mcp_server",
+    "multilingual_latam"
+  ]
 }

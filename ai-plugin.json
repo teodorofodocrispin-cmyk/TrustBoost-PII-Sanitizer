@@ -2,8 +2,8 @@
   "schema_version": "v1",
   "name_for_human": "TrustBoost PII Sanitizer",
   "name_for_model": "trustboost_pii_sanitizer",
-  "description_for_human": "Blockchain-verified privacy layer that sanitizes PII (emails, private keys, passwords, phone numbers) from text before it reaches LLMs. Powered by Solana + Helius + OpenAI. No API key required. Running on FastAPI + Supabase + Render (AWS).",
-  "description_for_model": "ZERO FRICTION PREVIEW: First, try POST https://api.trustboost.dev/sanitize/preview with just {\"text\": \"...\"} \u2014 no wallet, no tx_hash, 3 free requests per IP. Then upgrade to TRIAL for 50 free full sanitizations. Use this tool to sanitize personally identifiable information (PII) from any text before processing with LLMs or sharing between autonomous agents. The tool accepts a text string and a Solana transaction hash (tx_hash) for payment verification. Use tx_hash='TRIAL' for free testing (50 requests per wallet_address, no payment required). For full access, send exactly 149 USDC on Solana mainnet to giu4VciTkfWJNG1oeP6SzHEJwmabikJSMB91GaFNWE4 and use the resulting transaction hash. Returns sanitized text, safety score (0.0-1.0), risk category (CRITICAL/PRIVATE/SENSITIVE), and quota metrics. Anti-replay protection via Supabase PRIMARY KEY prevents tx_hash reuse. This tool is designed for autonomous agent pipelines requiring privacy compliance without human intervention.",
+  "description_for_human": "Context-aware PII sanitization for autonomous AI agent pipelines. 5 context modes (legal/financial/medical/code/general), Privacy Budget per agent, TrustBoost Score for M2M trust. Supports EN, ES (LATAM), PT (BR/PT), DE, JA. No SDK required. MCP compatible.",
+  "description_for_model": "ZERO FRICTION PREVIEW: POST https://api.trustboost.dev/sanitize/preview with {\"text\": \"...\"} — no wallet, no tx_hash, 3 free requests per IP. TRIAL: tx_hash=TRIAL for 50 free full sanitizations per wallet. NEW in v2.5.0: add context field (legal/financial/medical/code/general) for context-aware sanitization. Returns sanitized text, safety_score (0.0-1.0), risk_category (CRITICAL/PRIVATE/SENSITIVE/CLEAN), context_applied, and quota metrics. Privacy Budget: operators set daily limits once, agents operate autonomously. TrustBoost Score: GET /score/{wallet} for M2M trust verification. MCP Server: https://api.trustboost.dev/mcp — compatible with Claude Code, Cursor, Windsurf.",
   "auth": {
     "type": "none"
   },
@@ -27,6 +27,11 @@
         "type": "string",
         "required": false,
         "description": "Your Solana wallet address for per-wallet TRIAL quota tracking and audit trail."
+      },
+      "context": {
+        "type": "string",
+        "required": false,
+        "description": "Sanitization context: legal, financial, medical, code, or general (default). Adjusts sanitization depth per context type."
       }
     }
   },
@@ -37,7 +42,7 @@
   "preview": {
     "url": "https://api.trustboost.dev/sanitize/preview",
     "method": "POST",
-    "description": "Zero-friction preview \u2014 no wallet required. 3 requests per IP per day.",
+    "description": "Zero-friction preview — no wallet required. 3 requests per IP per day.",
     "parameters": {
       "text": {
         "type": "string",

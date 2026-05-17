@@ -1,8 +1,8 @@
 {
   "$schema": "https://raw.githubusercontent.com/molt/schema/main/skill.schema.json",
   "name": "TrustBoost-PII-Sanitizer",
-  "version": "2.0.0",
-  "description": "Blockchain-verified PII sanitization layer for autonomous AI agents. Redacts names, emails, phone numbers, addresses, national IDs, private keys, and financial data before text reaches LLM providers. Supports English, Spanish (LATAM), Portuguese (Brazil/Portugal), German, and Japanese. Payment verified on-chain via Helius oracle on Solana. No SDK required \u2014 single POST request.",
+  "version": "2.5.0",
+  "description": "Context-aware PII sanitization for autonomous AI agent pipelines. 5 context modes, Privacy Budget, TrustBoost Score M2M trust verification. EN/ES-LATAM/PT-BR/DE/JA. MCP compatible.",
   "author": "teodorofodocrispin-cmyk",
   "license": "MIT",
   "triggers": [
@@ -21,7 +21,7 @@
     "sanitize before llm",
     "remove pii before sending",
     "protect user data",
-    "\u500b\u4eba\u60c5\u5831\u524a\u9664",
+    "個人情報削除",
     "datos personales",
     "datenschutz"
   ],
@@ -123,10 +123,10 @@
       "language": "Japanese",
       "region": "Japan",
       "pii_patterns": [
-        "\u30de\u30a4\u30ca\u30f3\u30d0\u30fc",
-        "\u904b\u8ee2\u514d\u8a31\u8a3c",
-        "\u30d1\u30b9\u30dd\u30fc\u30c8\u756a\u53f7",
-        "\u4f4f\u6240"
+        "マイナンバー",
+        "運転免許証",
+        "パスポート番号",
+        "住所"
       ]
     }
   ],
@@ -251,7 +251,7 @@
       "limit_scope": "per_wallet_address",
       "cost": 0,
       "currency": null,
-      "description": "Free tier \u2014 50 sanitizations per wallet address. No payment, no registration, no API key required. Start immediately."
+      "description": "Free tier — 50 sanitizations per wallet address. No payment, no registration, no API key required. Start immediately."
     },
     "paid": {
       "limit": 10000,
@@ -259,7 +259,7 @@
       "currency": "USDC",
       "network": "solana",
       "payment_address": "giu4VciTkfWJNG1oeP6SzHEJwmabikJSMB91GaFNWE4",
-      "description": "Full license \u2014 10,000 sanitizations upon verified payment of 149 USDC on Solana Mainnet."
+      "description": "Full license — 10,000 sanitizations upon verified payment of 149 USDC on Solana Mainnet."
     },
     "preview": {
       "limit": 3,
@@ -268,7 +268,7 @@
       "currency": null,
       "token_required": false,
       "wallet_required": false,
-      "description": "Zero-friction preview \u2014 3 sanitizations per IP per 24h. No wallet, no tx_hash, no setup. Try instantly."
+      "description": "Zero-friction preview — 3 sanitizations per IP per 24h. No wallet, no tx_hash, no setup. Try instantly."
     }
   },
   "error_responses": {
@@ -305,5 +305,5 @@
     "evaluation_date": "2026-04-22",
     "report": "https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer/blob/main/AGENT_EVALUATION.md"
   },
-  "agent_notes": "TrustBoost v2.0 runs on FastAPI + Supabase + Render (AWS). No human intervention required. TRIAL mode gives 50 free requests per wallet_address \u2014 each agent has its own independent quota. Anti-replay protection via Supabase PRIMARY KEY prevents tx_hash reuse. The quota_remaining field enables autonomous budget management. When quota is exhausted, the error response includes complete payment instructions for self-healing workflows."
+  "agent_notes": "TrustBoost v2.0 runs on FastAPI + Supabase + Render (AWS). No human intervention required. TRIAL mode gives 50 free requests per wallet_address — each agent has its own independent quota. Anti-replay protection via Supabase PRIMARY KEY prevents tx_hash reuse. The quota_remaining field enables autonomous budget management. When quota is exhausted, the error response includes complete payment instructions for self-healing workflows."
 }
