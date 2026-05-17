@@ -1,7 +1,21 @@
 # Privacy Policy — TrustBoost PII Sanitizer
-**Version:** 3.0  
-**Effective date:** April 27, 2026  
+**Version:** 4.0  
+**Effective date:** May 17, 2026  
 **Maintainer:** teodorofodocrispin-cmyk (GitHub)
+
+---
+
+## New in v4.0 (TrustBoost v2.5.0)
+
+Three new capabilities with privacy implications:
+
+**Context-Aware Sanitization:** The `context` field label (e.g., `financial`) is stored in `audit_log`. The raw text is never stored regardless of context.
+
+**Privacy Budget per Agent:** Operator-configured limits stored in `agent_budgets` table. Contains: `operator_id`, `daily_limit`, `context_limit`, `is_active`. No PII stored.
+
+**TrustBoost Score:** Aggregated statistics per `wallet_address` — total sanitizations, average safety score, trust tier. All derived from existing `audit_log` data. No new PII collected.
+
+**MCP Server:** Requests via `api.trustboost.dev/mcp` follow the same privacy policy as `/sanitize`. No additional data is collected.
 
 ---
 
@@ -10,6 +24,7 @@ When you call the TrustBoost API, you send:
 - `tx_hash` — a transaction identifier (or `"TRIAL"` for testing)
 - `text` — the content you want sanitized
 - `wallet_address` — your Solana wallet address (optional, used for per-wallet TRIAL quota tracking)
+- `context` — sanitization context (optional): `legal`, `financial`, `medical`, `code`, or `general`. Never stored as raw input — only the applied context label is logged.
 
 ---
 
@@ -17,6 +32,7 @@ When you call the TrustBoost API, you send:
 
 | Step | Action |
 |------|--------|
+| 0 | If `context` is provided, it is used to adjust sanitization depth — the label is stored, not the value |
 | 1 | Your `text` is sent to OpenAI GPT-4o-mini for PII redaction |
 | 2 | The sanitized result is returned to you |
 | 3 | The sanitized result (only) is stored in Supabase PostgreSQL for audit purposes |
