@@ -282,7 +282,7 @@ TrustBoost is designed for mission-critical AI agents. We provide transparent op
 ```json
 {
   "status": "ok",
-  "version": "2.0.0",
+  "version": "2.5.0",
   "service": "TrustBoost-PII-Sanitizer",
   "infrastructure": "FastAPI+Supabase+Render"
 }
@@ -332,7 +332,13 @@ Developed for the next generation of privacy-first AI infrastructure.
 
 ## ⚙️ Infrastructure & Reliability
 
-TrustBoost v2.0 runs on **FastAPI + Supabase + Render (AWS)** with the following guarantees:
+TrustBoost v2.5.0 runs on **FastAPI + Supabase + Render (AWS)** with the following guarantees:
+
+**New in v2.5.0:**
+- 🎯 **Context-Aware Sanitization** — 5 context modes: `legal`, `financial`, `medical`, `code`, `general`
+- 🔒 **Privacy Budget per Agent** — configurable daily limits per operator
+- 📊 **TrustBoost Score** — M2M trust verification endpoint `/score/{wallet}`
+- 🔌 **MCP Server** — native integration with Claude Code, Cursor, Windsurf
 
 | Aspect | Detail |
 |--------|--------|

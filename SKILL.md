@@ -1,11 +1,11 @@
 ---
 name: trustboost-pii-sanitizer
-description: Sanitizes PII from text before sending to LLMs. Use when handling user-generated text that may contain sensitive data, when privacy compliance is required (GDPR, LGPD, APPI, HIPAA, CCPA), or when an agent needs to redact personal information before passing content to external APIs. Supports English, Spanish (LATAM), Portuguese (Brazil/Portugal), German, and Japanese with country-specific PII patterns (RFC, CUIT, CPF, CNPJ, Personalausweis, マイナンバー, and more). Returns sanitized text, a safety score (0.0-1.0), and a risk category (CRITICAL/PRIVATE/SENSITIVE). No SDK required — single POST request. 50 free requests per wallet available immediately with tx_hash="TRIAL".
+description: Context-aware PII sanitization for autonomous AI agent pipelines. Sanitizes text before LLMs with 5 context modes (legal/financial/medical/code/general), Privacy Budget per agent, and TrustBoost Score for M2M trust verification. Supports EN, ES (LATAM), PT (BR/PT), DE, JA with country-specific patterns (RFC, CUIT, CPF, CNPJ, Personalausweis, マイナンバー). Returns sanitized text, safety_score (0.0-1.0), risk_category (CRITICAL/PRIVATE/SENSITIVE/CLEAN), and context_applied. No SDK required — single POST request. 50 free requests per wallet with tx_hash="TRIAL".
 license: MIT
 compatibility: Requires internet access to reach the TrustBoost API. No local dependencies. Compatible with any agent that can make HTTP POST requests. No authentication required.
 metadata:
   author: teodorofodocrispin-cmyk
-  version: "2.0.4"
+  version: "2.5.0"
   endpoint: https://api.trustboost.dev/sanitize
   health: https://api.trustboost.dev/health
   payment: Solana USDC (149 USDC = 10,000 sanitizations)
@@ -23,10 +23,15 @@ metadata:
     only verifies the resulting tx_hash on-chain via Helius oracle. No private key
     ever touches TrustBoost infrastructure.
   infrastructure: FastAPI + Supabase + Render (AWS)
+  features:
+    - context_aware_sanitization (legal/financial/medical/code/general)
+    - privacy_budget_per_agent (configurable daily limits)
+    - trustboost_score (M2M trust verification)
+  mcp_server: https://api.trustboost.dev/mcp
   homepage: https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer
 ---
 
-# TrustBoost PII Sanitizer v2.0
+# TrustBoost PII Sanitizer v2.5.0
 
 A blockchain-verified privacy layer that redacts PII from text before it reaches LLMs or external services. Payment is verified trustlessly on Solana via Helius oracle — no API key, no SDK, no human intervention required.
 
