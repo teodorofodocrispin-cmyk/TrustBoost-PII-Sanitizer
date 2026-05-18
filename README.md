@@ -140,6 +140,9 @@ TrustBoost automatically detects the input language and applies country-specific
 | 🇧🇷🇵🇹 **Portuguese** | Brazil & Portugal | CPF (BR), CNPJ (BR), RG (BR), NIF (PT), NUS (PT), phone formats +55 / +351 |
 | 🇩🇪 **German** | Germany / Austria / Switzerland | Personalausweis, Steuernummer, Sozialversicherungsnummer, IBAN DE##, Reisepass, +49 |
 | 🇯🇵 **Japanese** | Japan | マイナンバー (My Number), 運転免許証 (driver license), パスポート番号 (passport), 電話番号, 住所 (address with 都道府県) |
+| 🇫🇷🇧🇪🇨🇦 **French** | France / Belgium / Switzerland / Canada | NIR (Numéro de Sécurité Sociale), SIRET, SIREN, Carte Vitale, IBAN FR, +33 / +32 / +41 |
+| 🇮🇹 **Italian** | Italy / San Marino | Codice Fiscale, Partita IVA, Carta d'Identità (CIE), Tessera Sanitaria, IBAN IT, +39 |
+| 🇰🇷 **Korean** | Republic of Korea | 주민등록번호 (RRN), 사업자등록번호, 여권번호, 운전면허번호, 건강보험번호, 010-XXXX-XXXX |
 
 **How it works:** Send any text in any supported language. TrustBoost detects the language automatically, applies the correct PII patterns, and returns the sanitized text in the same language.
 
@@ -440,7 +443,7 @@ japanese-pii
 **Capability summary for agent consumption:**
 - INPUT: raw text containing potential PII — any supported language
 - OUTPUT: sanitized text + safety_score + risk_category + quota_metrics
-- LANGUAGES: English, Spanish (LATAM), Portuguese (Brazil/Portugal), German, Japanese
+- LANGUAGES: English, Spanish (LATAM), Portuguese (Brazil/Portugal), German, Japanese, French, Italian, Korean
 - PAYMENT: Solana USDC (149 USDC = 10,000 sanitizations)
 - TRIAL: tx_hash="TRIAL" → 50 free sanitizations per wallet, no payment required
 - LATENCY: ~200ms average
