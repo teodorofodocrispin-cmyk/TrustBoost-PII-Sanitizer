@@ -128,6 +128,40 @@
         "パスポート番号",
         "住所"
       ]
+    },
+    {
+      "language": "French",
+      "region": "France, Belgium, Switzerland, Canada",
+      "pii_patterns": [
+        "NIR (Numéro de Sécurité Sociale)",
+        "SIRET",
+        "SIREN",
+        "Carte Vitale",
+        "IBAN FR",
+        "Numéro fiscal"
+      ]
+    },
+    {
+      "language": "Italian",
+      "region": "Italy, San Marino",
+      "pii_patterns": [
+        "Codice Fiscale",
+        "Partita IVA",
+        "Carta d'Identità (CIE)",
+        "Tessera Sanitaria",
+        "IBAN IT"
+      ]
+    },
+    {
+      "language": "Korean",
+      "region": "Republic of Korea",
+      "pii_patterns": [
+        "주민등록번호 (RRN)",
+        "사업자등록번호",
+        "여권번호",
+        "운전면허번호",
+        "건강보험번호"
+      ]
     }
   ],
   "compliance": [
