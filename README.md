@@ -465,7 +465,7 @@ It represents my attempt to build infrastructure for the agent-to-agent economy:
 ✅ A transparent experiment where the code is shared  
 ✅ An honest attempt to solve a real problem (PII redaction for AI agents)  
 ✅ A prototype of an information firewall for autonomous AI systems  
-✅ A multilingual privacy layer covering 5 languages and 15+ countries  
+✅ A multilingual privacy layer covering 8 languages and 20+ countries  
 
 ### What this project is not
 

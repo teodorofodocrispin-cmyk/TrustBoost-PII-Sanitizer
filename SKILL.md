@@ -1,6 +1,6 @@
 ---
 name: trustboost-pii-sanitizer
-description: Context-aware PII sanitization for autonomous AI agent pipelines. Sanitizes text before LLMs with 5 context modes (legal/financial/medical/code/general), Privacy Budget per agent, and TrustBoost Score for M2M trust verification. Supports EN, ES (LATAM), PT (BR/PT), DE, JA with country-specific patterns (RFC, CUIT, CPF, CNPJ, Personalausweis, マイナンバー). Returns sanitized text, safety_score (0.0-1.0), risk_category (CRITICAL/PRIVATE/SENSITIVE/CLEAN), and context_applied. No SDK required — single POST request. 50 free requests per wallet with tx_hash="TRIAL".
+description: Context-aware PII sanitization for autonomous AI agent pipelines. Sanitizes text before LLMs with 5 context modes (legal/financial/medical/code/general), Privacy Budget per agent, and TrustBoost Score for M2M trust verification. Supports EN, ES (LATAM), PT (BR/PT), DE, JA, FR, IT, KO with country-specific patterns (RFC, CUIT, CPF, CNPJ, Personalausweis, マイナンバー, NIR, Codice Fiscale, 주민등록번호). Returns sanitized text, safety_score (0.0-1.0), risk_category (CRITICAL/PRIVATE/SENSITIVE/CLEAN), and context_applied. No SDK required — single POST request. 50 free requests per wallet with tx_hash="TRIAL".
 license: MIT
 compatibility: Requires internet access to reach the TrustBoost API. No local dependencies. Compatible with any agent that can make HTTP POST requests. No authentication required.
 metadata:
@@ -13,7 +13,7 @@ metadata:
   preview: https://api.trustboost.dev/sanitize/preview (3 free requests per IP, no wallet required)
   autonomy_score: 8.5/10
   audit_score: 9.8/10
-  languages: English, Spanish, Portuguese, German, Japanese
+  languages: English, Spanish, Portuguese, German, Japanese, French, Italian, Korean
   compliance: GDPR, LGPD, APPI, CCPA, DPDPA
   requires_env: none
   wallet_security: >
