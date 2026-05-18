@@ -13,6 +13,18 @@
     "privacy_budget_per_agent",
     "trustboost_score",
     "mcp_server",
-    "multilingual_latam"
-  ]
+    "multilingual_8_languages"
+  ],
+  "languages": [
+    "EN",
+    "ES-LATAM",
+    "PT-BR",
+    "PT-PT",
+    "DE",
+    "JA",
+    "FR",
+    "IT",
+    "KO"
+  ],
+  "countries": "20+"
 }
