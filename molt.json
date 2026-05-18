@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/molt/schema/main/skill.schema.json",
   "name": "TrustBoost-PII-Sanitizer",
   "version": "2.5.0",
-  "description": "Context-aware PII sanitization for autonomous AI agent pipelines. 5 context modes, Privacy Budget, TrustBoost Score M2M trust verification. EN/ES-LATAM/PT-BR/DE/JA. MCP compatible.",
+  "description": "Context-aware PII sanitization for autonomous AI agent pipelines. 5 context modes (legal/financial/medical/code/general), Privacy Budget per agent, TrustBoost Score M2M trust verification. EN/ES-LATAM/PT-BR/DE/JA/FR/IT/KO. MCP compatible: api.trustboost.dev/mcp.",
   "author": "teodorofodocrispin-cmyk",
   "license": "MIT",
   "triggers": [
@@ -23,7 +23,11 @@
     "protect user data",
     "個人情報削除",
     "datos personales",
-    "datenschutz"
+    "datenschutz",
+    "sanitize en français",
+    "sanitizzare",
+    "개인정보 제거",
+    "eu ai act compliance"
   ],
   "tags": [
     "security",
@@ -58,7 +62,13 @@
     "data-firewall",
     "fastapi",
     "supabase",
-    "production-ready"
+    "production-ready",
+    "french",
+    "italian",
+    "korean",
+    "eu-ai-act",
+    "mcp",
+    "context-aware"
   ],
   "capabilities": [
     "pii-detection",
@@ -69,7 +79,11 @@
     "audit-trail",
     "quota-tracking",
     "per-wallet-trial-tracking",
-    "replay-attack-protection"
+    "replay-attack-protection",
+    "context_aware_sanitization",
+    "privacy_budget_management",
+    "trustboost_score",
+    "mcp_server"
   ],
   "supported_languages": [
     {
@@ -177,7 +191,9 @@
     "health": "https://api.trustboost.dev/health",
     "repository": "https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer",
     "skill": "https://raw.githubusercontent.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer/main/SKILL.md",
-    "preview": "https://api.trustboost.dev/sanitize/preview"
+    "preview": "https://api.trustboost.dev/sanitize/preview",
+    "mcp": "https://api.trustboost.dev/mcp",
+    "score": "https://api.trustboost.dev/score/{wallet_address}"
   },
   "integration": {
     "method": "POST",
@@ -221,6 +237,19 @@
       "type": "string",
       "description": "Your Solana wallet address. Used for per-wallet TRIAL quota tracking and audit trail.",
       "required": false
+    },
+    "context": {
+      "type": "string",
+      "description": "Sanitization context mode. Adjusts detection depth per domain.",
+      "required": false,
+      "default": "general",
+      "enum": [
+        "general",
+        "legal",
+        "financial",
+        "medical",
+        "code"
+      ]
     }
   },
   "outputs": {
@@ -245,9 +274,10 @@
       "enum": [
         "CRITICAL",
         "PRIVATE",
-        "SENSITIVE"
+        "SENSITIVE",
+        "CLEAN"
       ],
-      "description": "CRITICAL: keys/passwords/financial. PRIVATE: emails/IDs/phones. SENSITIVE: handles/locations."
+      "description": "CRITICAL: keys/passwords/financial. PRIVATE: emails/IDs/phones. SENSITIVE: handles/locations. CLEAN: no PII detected."
     },
     "usage_metrics": {
       "type": "object",
@@ -262,6 +292,10 @@
           "description": "Total quota limit: 50 for TRIAL per wallet, 10,000 for paid license"
         }
       }
+    },
+    "context_applied": {
+      "type": "string",
+      "description": "The context mode applied during sanitization"
     }
   },
   "privacy": {
@@ -276,7 +310,8 @@
       "timestamp"
     ],
     "storage_backend": "Supabase PostgreSQL (private audit ledger)",
-    "note": "Raw input text is never stored. Only sanitized output and metadata are logged for operational traceability."
+    "note": "Raw input text is never stored. Only sanitized output and metadata are logged for operational traceability.",
+    "retention_policy": "90 days. Deleted on request via teodorofodocrispin@gmail.com. Raw input never stored."
   },
   "quota": {
     "trial": {
@@ -336,8 +371,9 @@
     "autonomy_score": 8.5,
     "audit_score": 9.8,
     "evaluated_by": "External AI system",
-    "evaluation_date": "2026-04-22",
-    "report": "https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer/blob/main/AGENT_EVALUATION.md"
+    "evaluation_date": "2026-05-17",
+    "report": "https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer/blob/main/AGENT_EVALUATION.md",
+    "version_evaluated": "2.5.0"
   },
-  "agent_notes": "TrustBoost v2.0 runs on FastAPI + Supabase + Render (AWS). No human intervention required. TRIAL mode gives 50 free requests per wallet_address — each agent has its own independent quota. Anti-replay protection via Supabase PRIMARY KEY prevents tx_hash reuse. The quota_remaining field enables autonomous budget management. When quota is exhausted, the error response includes complete payment instructions for self-healing workflows."
+  "agent_notes": "TrustBoost v2.5.0 runs on FastAPI + Supabase + Render (AWS). No human intervention required. TRIAL mode gives 50 free requests per wallet_address — each agent has its own independent quota. Context-aware sanitization: pass context field (legal/financial/medical/code/general) for domain-specific detection. Privacy Budget: operators configure daily limits once, agents operate autonomously. TrustBoost Score: GET /score/{wallet} for M2M trust verification. Anti-replay protection via Supabase PRIMARY KEY prevents tx_hash reuse."
 }
