@@ -173,6 +173,9 @@ and applies country-specific patterns:
 | 🇧🇷🇵🇹 Portuguese | Brazil & Portugal | CPF, CNPJ, RG, NIF, NUS |
 | 🇩🇪 German | Germany/Austria/CH | Personalausweis, Steuernummer, IBAN DE |
 | 🇯🇵 Japanese | Japan | マイナンバー, 運転免許証, パスポート番号, 住所 |
+| 🇫🇷🇧🇪🇨🇦 French | France / Belgium / Switzerland / Canada | NIR (Sécurité Sociale), SIRET, SIREN, Carte Vitale, IBAN FR |
+| 🇮🇹 Italian | Italy / San Marino | Codice Fiscale, Partita IVA, Carta d'Identità, Tessera Sanitaria, IBAN IT |
+| 🇰🇷 Korean | Republic of Korea | 주민등록번호 (RRN), 사업자등록번호, 여권번호, 운전면허번호 |
 
 ---
 
