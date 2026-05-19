@@ -405,3 +405,4 @@ Solana mainnet to:
 - Health check: https://api.trustboost.dev/health
 - Schema (molt.json): https://raw.githubusercontent.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer/main/molt.json
 - Infrastructure: FastAPI + Supabase + Render (AWS)
+- Live Demo: https://huggingface.co/spaces/TrustBoost/pii-sanitizer
