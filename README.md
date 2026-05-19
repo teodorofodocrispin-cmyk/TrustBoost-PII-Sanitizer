@@ -496,8 +496,14 @@ Use TrustBoost if it serves your purpose. Ignore it if it does not. Either way, 
 ## Downloads
 
 [![Downloads](https://img.shields.io/badge/ClawHub-400%2B%20downloads-brightgreen)](https://clawhub.ai/teodorofodocrispin-cmyk/trustboost-pii-sanitizer)
+[![skills.sh](https://skills.sh/b/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer)](https://skills.sh/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer)
 
 [![Live Demo](https://img.shields.io/badge/🛡️%20Live%20Demo-Hugging%20Face-yellow)](https://huggingface.co/spaces/TrustBoost/pii-sanitizer)
 
 **Try TrustBoost instantly — no registration, no wallet required:**
 👉 https://huggingface.co/spaces/TrustBoost/pii-sanitizer
+
+**Install as a skill for Claude Code, Cursor, Codex, Copilot, Windsurf and more:**
+```bash
+npx skills add teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer
+```
