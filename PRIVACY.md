@@ -5,7 +5,7 @@
 
 ---
 
-## New in v4.0 (TrustBoost v2.5.0)
+## New in v4.0 (TrustBoost v2.6.0)
 
 Three new capabilities with privacy implications:
 

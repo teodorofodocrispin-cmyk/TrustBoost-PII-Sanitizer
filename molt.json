@@ -375,7 +375,7 @@
     "evaluated_by": "External AI system",
     "evaluation_date": "2026-05-17",
     "report": "https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer/blob/main/AGENT_EVALUATION.md",
-    "version_evaluated": "2.5.0"
+    "version_evaluated": "2.6.0"
   },
-  "agent_notes": "TrustBoost v2.5.0 runs on FastAPI + Supabase + Render (AWS). No human intervention required. TRIAL mode gives 50 free requests per wallet_address — each agent has its own independent quota. Context-aware sanitization: pass context field (legal/financial/medical/code/general) for domain-specific detection. Privacy Budget: operators configure daily limits once, agents operate autonomously. TrustBoost Score: GET /score/{wallet} for M2M trust verification. Anti-replay protection via Supabase PRIMARY KEY prevents tx_hash reuse."
+  "agent_notes": "TrustBoost v2.6.0 runs on FastAPI + Supabase + Render (AWS). No human intervention required. TRIAL mode gives 50 free requests per wallet_address — each agent has its own independent quota. Context-aware sanitization: pass context field (legal/financial/medical/code/general) for domain-specific detection. Privacy Budget: operators configure daily limits once, agents operate autonomously. TrustBoost Score: GET /score/{wallet} for M2M trust verification. Anti-replay protection via Supabase PRIMARY KEY prevents tx_hash reuse. Proof of Sanitization: every paid sanitization is anchored on Solana via Helius. Verify at /verify/{anchor_tx}."
 }

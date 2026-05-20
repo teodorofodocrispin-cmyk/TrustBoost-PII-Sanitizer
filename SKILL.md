@@ -31,7 +31,7 @@ metadata:
   homepage: https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer
 ---
 
-# TrustBoost PII Sanitizer v2.5.0
+# TrustBoost PII Sanitizer v2.6.0
 
 A blockchain-verified privacy layer that redacts PII from text before it reaches LLMs or external services. Payment is verified trustlessly on Solana via Helius oracle — no API key, no SDK, no human intervention required.
 
