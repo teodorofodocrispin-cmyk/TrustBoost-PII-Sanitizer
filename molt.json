@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/molt/schema/main/skill.schema.json",
   "name": "TrustBoost-PII-Sanitizer",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "description": "Context-aware PII sanitization for autonomous AI agent pipelines. 5 context modes (legal/financial/medical/code/general), Privacy Budget per agent, TrustBoost Score M2M trust verification. EN/ES-LATAM/PT-BR/DE/JA/FR/IT/KO. MCP compatible: api.trustboost.dev/mcp.",
   "author": "teodorofodocrispin-cmyk",
   "license": "MIT",
@@ -83,7 +83,8 @@
     "context_aware_sanitization",
     "privacy_budget_management",
     "trustboost_score",
-    "mcp_server"
+    "mcp_server",
+    "proof_of_sanitization_solana"
   ],
   "supported_languages": [
     {
@@ -193,7 +194,8 @@
     "skill": "https://raw.githubusercontent.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer/main/SKILL.md",
     "preview": "https://api.trustboost.dev/sanitize/preview",
     "mcp": "https://api.trustboost.dev/mcp",
-    "score": "https://api.trustboost.dev/score/{wallet_address}"
+    "score": "https://api.trustboost.dev/score/{wallet_address}",
+    "verify": "https://api.trustboost.dev/verify/{anchor_tx}"
   },
   "integration": {
     "method": "POST",

@@ -1,7 +1,7 @@
 {
   "status": "ok",
   "timestamp": "2026-04-27 09:00:00",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "service": "TrustBoost-PII-Sanitizer",
   "uptime_percent": 99.92,
   "response_time_ms": 200,
@@ -13,7 +13,8 @@
     "privacy_budget_per_agent",
     "trustboost_score",
     "mcp_server",
-    "multilingual_8_languages"
+    "multilingual_8_languages",
+    "proof_of_sanitization_solana"
   ],
   "languages": [
     "EN",
@@ -26,5 +27,13 @@
     "IT",
     "KO"
   ],
-  "countries": "20+"
+  "countries": "20+",
+  "endpoints": {
+    "sanitize": "https://api.trustboost.dev/sanitize",
+    "preview": "https://api.trustboost.dev/sanitize/preview",
+    "demo": "https://api.trustboost.dev/demo",
+    "score": "https://api.trustboost.dev/score/{wallet}",
+    "verify": "https://api.trustboost.dev/verify/{anchor_tx}",
+    "health": "https://api.trustboost.dev/health"
+  }
 }

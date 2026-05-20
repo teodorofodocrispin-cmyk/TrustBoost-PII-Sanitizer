@@ -5,7 +5,7 @@ license: MIT
 compatibility: Requires internet access to reach the TrustBoost API. No local dependencies. Compatible with any agent that can make HTTP POST requests. No authentication required.
 metadata:
   author: teodorofodocrispin-cmyk
-  version: "2.5.0"
+  version: "2.6.0"
   endpoint: https://api.trustboost.dev/sanitize
   health: https://api.trustboost.dev/health
   payment: Solana USDC (149 USDC = 10,000 sanitizations)
@@ -406,3 +406,4 @@ Solana mainnet to:
 - Schema (molt.json): https://raw.githubusercontent.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer/main/molt.json
 - Infrastructure: FastAPI + Supabase + Render (AWS)
 - Live Demo: https://huggingface.co/spaces/TrustBoost/pii-sanitizer
+- Verify proof: https://api.trustboost.dev/verify/{anchor_tx}

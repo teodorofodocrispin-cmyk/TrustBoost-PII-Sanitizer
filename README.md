@@ -285,7 +285,7 @@ TrustBoost is designed for mission-critical AI agents. We provide transparent op
 ```json
 {
   "status": "ok",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "service": "TrustBoost-PII-Sanitizer",
   "infrastructure": "FastAPI+Supabase+Render"
 }
@@ -336,6 +336,9 @@ Developed for the next generation of privacy-first AI infrastructure.
 ## ⚙️ Infrastructure & Reliability
 
 TrustBoost v2.5.0 runs on **FastAPI + Supabase + Render (AWS)** with the following guarantees:
+
+**New in v2.6.0:**
+- 🔗 **Proof of Sanitization on Solana** — every paid sanitization is anchored on-chain via Helius. Verifiable by anyone at `/verify/{anchor_tx}`
 
 **New in v2.5.0:**
 - 🎯 **Context-Aware Sanitization** — 5 context modes: `legal`, `financial`, `medical`, `code`, `general`
