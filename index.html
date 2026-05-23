@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="TrustBoost PII Sanitizer — Privacy firewall for AI agents. EU AI Act compliant. Proof of Sanitization on Solana.">
+<meta property="og:title" content="TrustBoost PII Sanitizer">
+<meta property="og:description" content="Your AI agent is leaking personal data. TrustBoost fixes that with on-chain proof.">
+<title>TrustBoost PII Sanitizer — Privacy Firewall for AI Agents</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0f1e; --bg2: #111827; --bg3: #1a2236;
+    --text: #f0f4ff; --text2: #8899aa; --text3: #556677;
+    --accent: #00d4aa; --danger: #ff4d4d;
+    --border: rgba(255,255,255,0.08); --border2: rgba(255,255,255,0.15);
+    --mono: "IBM Plex Mono", monospace; --sans: "DM Sans", sans-serif;
+    --radius: 10px; --radius-lg: 16px;
+  }
+  body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .container { max-width: 860px; margin: 0 auto; padding: 0 1.5rem; }
+
+  nav { padding: 1.25rem 0; border-bottom: 0.5px solid var(--border); }
+  nav .inner { display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-family: var(--mono); font-size: 14px; font-weight: 600; color: var(--accent); }
+  .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+  .nav-links a { font-size: 13px; color: var(--text2); }
+  .nav-pill { background: var(--accent); color: #000; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+  .nav-pill:hover { text-decoration: none; opacity: 0.9; }
+
+  .hero { padding: 4rem 0 3rem; text-align: center; }
+  .hero-badge { display: inline-block; font-family: var(--mono); font-size: 11px; color: var(--accent); border: 0.5px solid var(--accent); padding: 4px 14px; border-radius: 20px; margin-bottom: 1.5rem; letter-spacing: 0.06em; }
+  .hero h1 { font-size: clamp(26px, 5vw, 38px); font-weight: 600; line-height: 1.2; margin-bottom: 1.25rem; letter-spacing: -0.02em; }
+  .hero h1 span { color: var(--accent); }
+  .hero p { font-size: 17px; color: var(--text2); max-width: 520px; margin: 0 auto 2rem; font-weight: 300; line-height: 1.7; }
+  .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { background: var(--accent); color: #000; padding: 13px 26px; border-radius: var(--radius); font-size: 14px; font-weight: 600; display: inline-block; }
+  .btn-primary:hover { text-decoration: none; opacity: 0.9; }
+  .btn-secondary { background: transparent; color: var(--text); padding: 13px 26px; border-radius: var(--radius); font-size: 14px; border: 0.5px solid var(--border2); display: inline-block; }
+  .btn-secondary:hover { text-decoration: none; border-color: var(--text2); }
+
+  .countdown { background: rgba(255,77,77,0.08); border-top: 0.5px solid rgba(255,77,77,0.2); border-bottom: 0.5px solid rgba(255,77,77,0.2); padding: 1.25rem 0; }
+  .countdown .inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .countdown-text { font-size: 13px; color: rgba(255,120,120,0.9); }
+  .countdown-text strong { display: block; font-size: 12px; font-family: var(--mono); color: rgba(255,100,100,0.7); margin-top: 2px; }
+  .countdown-days { font-family: var(--mono); font-size: 36px; font-weight: 600; color: var(--danger); line-height: 1; }
+  .countdown-days span { font-size: 13px; font-weight: 400; color: rgba(255,100,100,0.7); margin-left: 6px; }
+
+  .section { padding: 3rem 0; border-bottom: 0.5px solid var(--border); }
+  .section-label { font-family: var(--mono); font-size: 11px; color: var(--text3); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2rem; }
+
+  .steps { display: flex; flex-direction: column; gap: 1.5rem; }
+  .step { display: flex; gap: 20px; align-items: flex-start; }
+  .step-num { width: 32px; height: 32px; border-radius: 50%; border: 0.5px solid var(--border2); display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 12px; color: var(--text3); flex-shrink: 0; }
+  .step-body { flex: 1; }
+  .step-title { font-size: 15px; font-weight: 500; margin-bottom: 6px; }
+  .step-desc { font-size: 14px; color: var(--text2); line-height: 1.6; }
+  .code-block { font-family: var(--mono); font-size: 12px; background: var(--bg3); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 10px 14px; margin-top: 10px; color: var(--text2); overflow-x: auto; }
+  .code-block .hl { color: var(--accent); }
+
+  .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+  .feature { background: var(--bg2); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; }
+  .feature-icon { font-size: 22px; margin-bottom: 10px; }
+  .feature-title { font-size: 14px; font-weight: 500; margin-bottom: 6px; }
+  .feature-desc { font-size: 13px; color: var(--text2); line-height: 1.5; }
+
+  .compliance-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .compliance-table th { text-align: left; padding: 10px 14px; font-size: 11px; font-family: var(--mono); color: var(--text3); letter-spacing: 0.06em; text-transform: uppercase; border-bottom: 0.5px solid var(--border); }
+  .compliance-table td { padding: 12px 14px; border-bottom: 0.5px solid var(--border); color: var(--text2); vertical-align: top; }
+  .compliance-table td:first-child { color: var(--text); font-weight: 500; }
+  .check { color: var(--accent); font-family: var(--mono); }
+
+  .pricing { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+  .plan { background: var(--bg2); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; position: relative; }
+  .plan.featured { border: 1.5px solid var(--accent); }
+  .plan-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #000; font-size: 11px; font-weight: 600; padding: 3px 12px; border-radius: 20px; white-space: nowrap; }
+  .plan-name { font-size: 12px; color: var(--text3); font-family: var(--mono); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
+  .plan-price { font-family: var(--mono); font-size: 26px; font-weight: 600; margin-bottom: 8px; }
+  .plan-quota { font-size: 12px; color: var(--accent); margin-bottom: 10px; }
+  .plan-desc { font-size: 13px; color: var(--text2); line-height: 1.5; }
+
+  .langs { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lang { font-size: 12px; background: var(--bg2); border: 0.5px solid var(--border); border-radius: 20px; padding: 5px 12px; color: var(--text2); }
+
+  .enterprise-box { background: var(--bg2); border: 0.5px solid var(--border2); border-radius: var(--radius-lg); padding: 2rem; }
+  .enterprise-box h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+  .enterprise-box p { font-size: 14px; color: var(--text2); margin-bottom: 1.5rem; line-height: 1.6; }
+  .enterprise-email { font-family: var(--mono); font-size: 16px; color: var(--accent); display: block; margin-bottom: 1rem; }
+  .enterprise-note { font-size: 12px; color: var(--text3); line-height: 1.6; }
+
+  footer { padding: 2rem 0; text-align: center; }
+  .footer-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem; }
+  .footer-links a { font-size: 13px; color: var(--text3); }
+  .footer-links a:hover { color: var(--text2); text-decoration: none; }
+  .footer-copy { font-family: var(--mono); font-size: 11px; color: var(--text3); }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .hero { padding: 2.5rem 0 2rem; }
+    .hero h1 { font-size: 24px; }
+    .hero p { font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <div class="inner">
+      <span class="nav-logo">TrustBoost_</span>
+      <div class="nav-links">
+        <a href="https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer">GitHub</a>
+        <a href="https://api.trustboost.dev/health">API Status</a>
+        <a href="PRIVACY.md">Privacy</a>
+        <a href="https://huggingface.co/spaces/TrustBoost/pii-sanitizer" class="nav-pill">Try free</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">v2.6.0 — live on Solana mainnet</div>
+    <h1>Your AI agent is leaking<br><span>personal data.</span> Let's fix that.</h1>
+    <p>TrustBoost sits between your agent and the LLM. It removes PII before it reaches the model — and proves it happened, on-chain, forever.</p>
+    <div class="cta-row">
+      <a href="https://huggingface.co/spaces/TrustBoost/pii-sanitizer" class="btn-primary">Try free — no wallet needed</a>
+      <a href="https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer" class="btn-secondary">View on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<div class="countdown">
+  <div class="container">
+    <div class="inner">
+      <div class="countdown-text">
+        EU AI Act enforcement
+        <strong>August 2, 2026</strong>
+      </div>
+      <div class="countdown-days" id="days">72<span>days remaining</span></div>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">How it works</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">Your agent sends text to TrustBoost</div>
+          <div class="step-desc">One POST request. No SDK. No setup. Works with Python, TypeScript, Go, Rust — any language.</div>
+          <div class="code-block"><span class="hl">POST</span> https://api.trustboost.dev/sanitize<br>{"text": "...", "tx_hash": "TRIAL", "context": "financial"}</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">PII is detected and redacted in milliseconds</div>
+          <div class="step-desc">Emails, national IDs, API keys, phone numbers, financial data — gone. 8 languages including LATAM identifiers like RFC, CPF, and CUIT that standard tools miss.</div>
+          <div class="code-block">{"sanitized_content": "Contact <span class="hl">[REDACTED]</span> at <span class="hl">[REDACTED]</span>",<br> "safety_score": 0.85, "risk_category": "CRITICAL"}</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">Proof anchored on Solana — verifiable by anyone</div>
+          <div class="step-desc">Every paid sanitization gets an immutable on-chain record. Show it to any auditor, regulator, or client. No trust required — the blockchain is the witness.</div>
+          <div class="code-block"><span class="hl">GET</span> https://api.trustboost.dev/verify/{anchor_tx}<br>{"status": "verified", "timestamp": "...", "proof": {...}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Features</div>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">&#128737;</div>
+        <div class="feature-title">Proof on-chain</div>
+        <div class="feature-desc">Immutable audit trail on Solana mainnet. Regulators verify independently — no middleman.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">&#127760;</div>
+        <div class="feature-title">8 languages</div>
+        <div class="feature-desc">EN, ES-LATAM, PT-BR, DE, JA, FR, IT, KO — country-specific identifiers verified in production.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">&#9889;</div>
+        <div class="feature-title">x402 native</div>
+        <div class="feature-desc">AI agents pay autonomously in USDC on Solana. HTTP 402 protocol — no human in the loop.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">&#128295;</div>
+        <div class="feature-title">MCP compatible</div>
+        <div class="feature-desc">Works with Claude Code, Cursor, Windsurf, Glama, and any MCP client out of the box.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">&#128202;</div>
+        <div class="feature-title">Privacy Budget</div>
+        <div class="feature-desc">Set daily PII limits per agent. Operators configure once — agents operate autonomously.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">&#9989;</div>
+        <div class="feature-title">Fail-closed</div>
+        <div class="feature-desc">If TrustBoost is unreachable, the request is blocked — never passed through unsanitized.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">EU AI Act compliance</div>
+    <table class="compliance-table">
+      <thead>
+        <tr><th>Requirement</th><th>TrustBoost solution</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Article 12 — Record-keeping</td><td><span class="check">&#10003;</span> Every sanitization logged with timestamp, wallet, and score</td></tr>
+        <tr><td>Article 13 — Transparency</td><td><span class="check">&#10003;</span> Proof of Sanitization on Solana — public and immutable</td></tr>
+        <tr><td>Article 26 — Deployer obligations</td><td><span class="check">&#10003;</span> Per-agent Privacy Budget and TrustBoost Score M2M</td></tr>
+        <tr><td>GDPR Art. 28 — Data Processor</td><td><span class="check">&#10003;</span> PRIVACY.md v4.1 with full Data Processing documentation</td></tr>
+        <tr><td>LGPD / CCPA / APPI</td><td><span class="check">&#10003;</span> Multi-jurisdiction compliance built into detection engine</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Pricing</div>
+    <div class="pricing">
+      <div class="plan">
+        <div class="plan-name">Trial</div>
+        <div class="plan-price">Free</div>
+        <div class="plan-quota">50 sanitizations per wallet</div>
+        <div class="plan-desc">No payment required. Start immediately with tx_hash=TRIAL. Perfect for evaluation.</div>
+      </div>
+      <div class="plan featured">
+        <div class="plan-badge">Most popular</div>
+        <div class="plan-name">Paid</div>
+        <div class="plan-price">149 USDC</div>
+        <div class="plan-quota">10,000 sanitizations</div>
+        <div class="plan-desc">On-chain proof included. Autonomous x402 payment on Solana mainnet. Anti-replay protection.</div>
+      </div>
+      <div class="plan">
+        <div class="plan-name">Enterprise</div>
+        <div class="plan-price">Contact</div>
+        <div class="plan-quota">Custom volume + SLA</div>
+        <div class="plan-desc">DPA for EU AI Act compliance. Priority support. Custom context modes. Invoice payment.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Languages supported</div>
+    <div class="langs">
+      <span class="lang">&#127482;&#127480; English — SSN, API keys, credit cards</span>
+      <span class="lang">&#127474;&#127485; Spanish LATAM — RFC, CUIT, CURP, DNI</span>
+      <span class="lang">&#127463;&#127479; Portuguese — CPF, CNPJ, NIF</span>
+      <span class="lang">&#127465;&#127466; German — Personalausweis, IBAN DE</span>
+      <span class="lang">&#127471;&#127477; Japanese — mainhumber, license</span>
+      <span class="lang">&#127467;&#127479; French — NIR, SIRET, Carte Vitale</span>
+      <span class="lang">&#127470;&#127481; Italian — Codice Fiscale, Partita IVA</span>
+      <span class="lang">&#127472;&#127479; Korean — RRN</span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Enterprise and compliance inquiries</div>
+    <div class="enterprise-box">
+      <h3>Need a DPA or custom volume?</h3>
+      <p>We work directly with teams building for regulated industries — healthcare, finance, legal, and government. If you need a formal Data Processing Agreement, custom quotas, or EU AI Act documentation, reach out directly.</p>
+      <a href="mailto:teodorofodocrispin@gmail.com" class="enterprise-email">teodorofodocrispin@gmail.com</a>
+      <div class="enterprise-note">Include your use case, industry, estimated volume, and compliance requirements. Response within 24 hours. MIT licensed — open source at its core.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-links">
+      <a href="https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer">GitHub</a>
+      <a href="https://glama.ai/mcp/servers/teodorofodocrispin-cmyk/trustboost-api">Glama</a>
+      <a href="https://clawhub.ai/teodorofodocrispin-cmyk/trustboost-pii-sanitizer">ClawHub</a>
+      <a href="https://huggingface.co/spaces/TrustBoost/pii-sanitizer">Hugging Face</a>
+      <a href="https://github.com/marketplace/actions/trustboost-pii-scanner">GitHub Action</a>
+      <a href="PRIVACY.md">Privacy Policy</a>
+    </div>
+    <div class="footer-copy">MIT licensed · Open source · Built in public · v2.6.0</div>
+  </div>
+</footer>
+
+<script>
+const target = new Date("2026-08-02T00:00:00Z");
+const now = new Date();
+const days = Math.ceil((target - now) / 864e5);
+const el = document.getElementById("days");
+el.innerHTML = (days > 0 ? days : 0) + "<span>days remaining</span>";
+</script>
+
+</body>
+</html>
