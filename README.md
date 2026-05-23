@@ -494,6 +494,29 @@ Use TrustBoost if it serves your purpose. Ignore it if it does not. Either way, 
 
 — A builder who is still learning, but building anyway.
 
+## 🏢 Enterprise and EU AI Act Compliance
+
+**EU AI Act enforcement begins August 2, 2026 — 72 days away.**
+
+TrustBoost provides the verifiable audit trail that autonomous AI agents need to demonstrate compliance:
+
+| Requirement | TrustBoost Solution |
+|------------|-------------------|
+| Article 12 — Record-keeping | Every sanitization logged with timestamp and wallet |
+| Article 13 — Transparency | Proof of Sanitization on Solana — public and immutable |
+| Article 26 — Deployer obligations | Per-agent Privacy Budget and TrustBoost Score |
+| GDPR Art. 28 — Data Processor | PRIVACY.md v4.1 with full Data Processing documentation |
+
+Verify any sanitization independently: GET https://api.trustboost.dev/verify/{anchor_tx}
+
+### Contact for Enterprise and Compliance inquiries
+
+📧 **teodorofodocrispin@gmail.com**
+
+Include in your message: your use case and industry, volume requirements, compliance requirements (GDPR, EU AI Act, HIPAA, LGPD), and whether you need a formal DPA. Response within 24 hours.
+
+---
+
 ## Downloads
 
 [![Downloads](https://img.shields.io/badge/ClawHub-400%2B%20downloads-brightgreen)](https://clawhub.ai/teodorofodocrispin-cmyk/trustboost-pii-sanitizer)
