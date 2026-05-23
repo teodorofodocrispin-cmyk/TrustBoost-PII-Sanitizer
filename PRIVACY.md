@@ -142,3 +142,81 @@ Any changes will be reflected in this file with a new version date.
 | 1.0 | April 8, 2026 | Initial release |
 | 2.0 | April 8, 2026 | Added third-party services table |
 | 3.0 | April 27, 2026 | Updated for v2.0 — Render + Supabase infrastructure, per-wallet tracking |
+
+
+---
+
+## Data Processing — EU AI Act and GDPR Compliance
+
+**TrustBoost acts as a Data Processor under GDPR Article 28 and the EU AI Act (Regulation EU 2024/1689).**
+
+### Role in the AI Value Chain
+
+Your Agent (Data Controller) sends text via POST /sanitize to TrustBoost (Data Processor), which sanitizes PII and anchors proof on Solana, before the LLM Provider receives sanitized text only.
+
+### Processing Details
+
+| Item | Detail |
+|------|--------|
+| **Role** | Data Processor (GDPR Art. 28) |
+| **Purpose** | PII detection and redaction before LLM processing |
+| **Data processed** | Text submitted via API — never stored in raw form |
+| **Retention** | 90 days for audit metadata. Deleted on request. |
+| **Location** | Render (AWS us-east-1, United States) |
+| **Legal basis** | Legitimate interest and contractual necessity |
+| **Deletion contact** | teodorofodocrispin@gmail.com |
+
+### Sub-processors
+
+| Sub-processor | Purpose | Location |
+|---------------|---------|----------|
+| OpenAI (GPT-4o-mini) | PII detection engine | United States |
+| Supabase | Audit log storage | United States |
+| Render (AWS) | API hosting | United States (us-east-1) |
+| Helius | Solana transaction oracle | Distributed |
+
+### What TrustBoost NEVER stores
+
+- Raw input text
+- Personal data of individuals mentioned in the text
+- Wallet private keys or credentials
+- Any data that would identify end users of your system
+
+### What TrustBoost stores (audit metadata only)
+
+- tx_hash: payment reference
+- input_length: character count, not content
+- sanitized_content: the redacted output
+- safety_score: risk classification 0.0 to 1.0
+- risk_category: CRITICAL, PRIVATE, SENSITIVE, or CLEAN
+- wallet_address: agent identifier for quota tracking
+- timestamp: ISO 8601 UTC
+- context: sanitization mode applied
+
+### Proof of Sanitization — EU AI Act Articles 12 and 13
+
+Every paid sanitization produces an immutable on-chain proof verifiable at GET https://api.trustboost.dev/verify/{anchor_tx}
+
+This audit trail supports compliance with:
+- Article 12 (Record-keeping obligations)
+- Article 13 (Transparency obligations)
+- Article 26 (Deployer obligations)
+
+### Your obligations as Data Controller
+
+As the operator using TrustBoost, you remain the Data Controller and are responsible for informing your users that their data passes through TrustBoost, ensuring your use case is lawful under GDPR, and maintaining your own records of processing activities.
+
+### Data Subject Rights
+
+Contact: teodorofodocrispin@gmail.com — Response time: 30 days (GDPR Art. 12)
+
+### Compliance Statement
+
+- GDPR: Data minimization, purpose limitation, retention limits
+- LGPD: Brazilian data protection law compliance
+- EU AI Act: Audit trail, transparency, record-keeping
+- CCPA: California Consumer Privacy Act
+- HIPAA: Not recommended for zero-transmission environments
+- SOC 2: Pending — prototype stage
+
+Last updated: May 22, 2026 — TrustBoost v2.6.0
