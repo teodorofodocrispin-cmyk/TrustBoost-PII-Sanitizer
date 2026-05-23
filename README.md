@@ -2,6 +2,8 @@
 
 🛡️ TrustBoost: Information Flow Control for Autonomous AI Agents
 
+🌐 **[Live Landing Page → trustboost.dev](https://teodorofodocrispin-cmyk.github.io/TrustBoost-PII-Sanitizer/)**
+
 [![Status: Active](https://img.shields.io/badge/Status-Active-brightgreen)]()
 [![skills.sh](https://skills.sh/b/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer)](https://skills.sh/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer)
 [![Philosophy: Digital Consciousness](https://img.shields.io/badge/Philosophy-Digital%20Consciousness-blue)]()
