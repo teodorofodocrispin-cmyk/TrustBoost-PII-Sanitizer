@@ -5,11 +5,14 @@
 🌐 **[Live Landing Page → trustboost.dev](https://teodorofodocrispin-cmyk.github.io/TrustBoost-PII-Sanitizer/)**
 
 [![Status: Active](https://img.shields.io/badge/Status-Active-brightgreen)]()
+[![GitHub Stars](https://img.shields.io/github/stars/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer?style=social)](https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer)
+
+> ⭐ If TrustBoost is useful, a GitHub star helps the project grow — thank you.
 [![skills.sh](https://skills.sh/b/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer)](https://skills.sh/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer)
 [![Philosophy: Digital Consciousness](https://img.shields.io/badge/Philosophy-Digital%20Consciousness-blue)]()
-[![Languages: 5](https://img.shields.io/badge/Languages-5%20supported-orange)]()
+[![Languages: 8](https://img.shields.io/badge/Languages-8%20supported-orange)]()
 [![Infrastructure: Render](https://img.shields.io/badge/Infrastructure-Render%20%2B%20Supabase-blue)]()
-[![Version: 2.0.0](https://img.shields.io/badge/Version-2.0.0-green)]()
+[![Version: 2.6.0](https://img.shields.io/badge/Version-2.6.0-green)]()
 
 ---
 **TrustBoost is not just a PII sanitizer. It is a security middleware that controls how sensitive information moves between autonomous agents, LLMs, and the external world.**
