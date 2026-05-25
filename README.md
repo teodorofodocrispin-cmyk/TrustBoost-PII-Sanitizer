@@ -524,7 +524,7 @@ Include in your message: your use case and industry, volume requirements, compli
 
 ## Downloads
 
-[![Downloads](https://img.shields.io/badge/ClawHub-400%2B%20downloads-brightgreen)](https://clawhub.ai/teodorofodocrispin-cmyk/trustboost-pii-sanitizer)
+[![Downloads](https://img.shields.io/badge/ClawHub-500%2B%20downloads-brightgreen)](https://clawhub.ai/teodorofodocrispin-cmyk/trustboost-pii-sanitizer)
 
 [![Live Demo](https://img.shields.io/badge/🛡️%20Live%20Demo-Hugging%20Face-yellow)](https://huggingface.co/spaces/TrustBoost/pii-sanitizer)
 
