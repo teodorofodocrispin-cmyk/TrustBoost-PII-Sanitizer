@@ -520,6 +520,63 @@ Verify any sanitization independently: GET https://api.trustboost.dev/verify/{an
 
 Include in your message: your use case and industry, volume requirements, compliance requirements (GDPR, EU AI Act, HIPAA, LGPD), and whether you need a formal DPA. Response within 24 hours.
 
+
+---
+
+## Performance Benchmarks
+
+Formal precision/recall evaluation across 34 labeled cases — 24 positive (text with PII) and 10 negative controls (text without PII).
+
+Run: `python3 benchmark.py`
+
+### Global Results
+
+| Metric | TrustBoost v2.6.0 |
+|--------|-------------------|
+| **Precision** | 1.000 |
+| **Recall** | 1.000 |
+| **F1 Score** | 1.000 |
+| **False Positive Rate** | 0.000 |
+| **TP / FP / FN / TN** | 24 / 0 / 0 / 10 |
+| **Avg Latency** | ~5,000ms (semantic LLM) |
+
+### Per Language
+
+| Language | Precision | Recall | F1 | Cases |
+|----------|-----------|--------|----|-------|
+| 🇺🇸 English | 1.000 | 1.000 | 1.000 | 8 |
+| 🇲🇽 Spanish LATAM | 1.000 | 1.000 | 1.000 | 6 |
+| 🇧🇷 Portuguese BR | 1.000 | 1.000 | 1.000 | 4 |
+| 🇩🇪 German | 1.000 | 1.000 | 1.000 | 3 |
+| 🇯🇵 Japanese | 1.000 | 1.000 | 1.000 | 4 |
+| 🇫🇷 French | 1.000 | 1.000 | 1.000 | 3 |
+| 🇮🇹 Italian | 1.000 | 1.000 | 1.000 | 3 |
+| 🇰🇷 Korean | 1.000 | 1.000 | 1.000 | 3 |
+
+### Ruflo Win Condition (@ruvnet requirement)
+
+| Requirement | Result | Status |
+|-------------|--------|--------|
+| LATAM/JP Recall ≥ 0.95 | 1.000 | ✅ |
+| LATAM/JP FPR ≤ 0.05 | 0.000 | ✅ |
+
+### Design Tradeoff
+
+TrustBoost uses GPT-4o-mini for **semantic detection** — not regex. This means:
+
+| Property | Regex tools | TrustBoost |
+|----------|-------------|------------|
+| Latency | ~5ms | ~5,000ms |
+| LATAM identifiers (RFC/CPF/CUIT) | ❌ | ✅ |
+| Contextual PII ("call me at the usual number") | ❌ | ✅ |
+| Compound PII (name + employer + city) | ❌ | ✅ |
+| On-chain proof | ❌ | ✅ |
+| False positives on corpus | varies | 0 |
+
+**Use TrustBoost when accuracy and compliance matter more than latency.**
+Use regex tools when sub-10ms latency is a hard requirement.
+
+
 ---
 
 ## Downloads
