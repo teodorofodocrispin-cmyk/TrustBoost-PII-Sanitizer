@@ -525,7 +525,7 @@ Include in your message: your use case and industry, volume requirements, compli
 
 ## Performance Benchmarks
 
-Formal precision/recall evaluation across 34 labeled cases — 24 positive (text with PII) and 10 negative controls (text without PII).
+Synthetic labeled corpus — 34 cases designed to cover edge cases across 8 languages and 5 context modes. Larger corpus in progress. Run: `python3 benchmark.py` to reproduce.
 
 Run: `python3 benchmark.py`
 
