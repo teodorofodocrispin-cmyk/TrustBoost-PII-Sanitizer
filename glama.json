@@ -1,0 +1,25 @@
+{
+  "name": "TrustBoost PII Sanitizer",
+  "description": "Context-aware PII sanitization for autonomous AI agent pipelines. Redacts emails, national IDs, API keys, and financial data before text reaches LLMs. Proof of Sanitization anchored on Solana. x402 compatible. EU AI Act compliant.",
+  "version": "2.6.0",
+  "license": "MIT",
+  "homepage": "https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer",
+  "repository": "https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer",
+  "author": "teodorofodocrispin-cmyk",
+  "categories": [
+    "AI & Machine Learning",
+    "Security"
+  ],
+  "languages": [
+    "EN",
+    "ES-LATAM",
+    "PT-BR",
+    "DE",
+    "JA",
+    "FR",
+    "IT",
+    "KO"
+  ],
+  "endpoint": "https://api.trustboost.dev/mcp",
+  "health": "https://api.trustboost.dev/health"
+}
