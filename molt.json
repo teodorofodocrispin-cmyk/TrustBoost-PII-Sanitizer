@@ -84,7 +84,11 @@
     "privacy_budget_management",
     "trustboost_score",
     "mcp_server",
-    "proof_of_sanitization_solana"
+    "proof_of_sanitization_solana",
+    "a2a_conformant",
+    "anp_crawleable",
+    "x402_autonomous_payment",
+    "message_send_endpoint"
   ],
   "supported_languages": [
     {
@@ -185,7 +189,8 @@
     "APPI",
     "HIPAA",
     "CCPA",
-    "DPDPA"
+    "DPDPA",
+    "EU-AI-Act-2026"
   ],
   "endpoints": {
     "api": "https://api.trustboost.dev/sanitize",
@@ -195,7 +200,10 @@
     "preview": "https://api.trustboost.dev/sanitize/preview",
     "mcp": "https://api.trustboost.dev/mcp",
     "score": "https://api.trustboost.dev/score/{wallet_address}",
-    "verify": "https://api.trustboost.dev/verify/{anchor_tx}"
+    "verify": "https://api.trustboost.dev/verify/{anchor_tx}",
+    "message_send": "https://api.trustboost.dev/message/send",
+    "agent_description": "https://api.trustboost.dev/.well-known/agent-description.json",
+    "llms_txt": "https://api.trustboost.dev/llms.txt"
   },
   "integration": {
     "method": "POST",
@@ -375,7 +383,34 @@
     "evaluated_by": "External AI system",
     "evaluation_date": "2026-05-17",
     "report": "https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer/blob/main/AGENT_EVALUATION.md",
-    "version_evaluated": "2.6.0"
+    "version_evaluated": "2.6.0",
+    "benchmark": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "false_positive_rate": 0.0,
+      "test_cases": 34,
+      "languages_tested": 8
+    }
   },
-  "agent_notes": "TrustBoost v2.6.0 runs on FastAPI + Supabase + Render (AWS). No human intervention required. TRIAL mode gives 50 free requests per wallet_address — each agent has its own independent quota. Context-aware sanitization: pass context field (legal/financial/medical/code/general) for domain-specific detection. Privacy Budget: operators configure daily limits once, agents operate autonomously. TrustBoost Score: GET /score/{wallet} for M2M trust verification. Anti-replay protection via Supabase PRIMARY KEY prevents tx_hash reuse. Proof of Sanitization: every paid sanitization is anchored on Solana via Helius. Verify at /verify/{anchor_tx}."
+  "agent_notes": "TrustBoost v2.6.0 runs on FastAPI + Supabase + Render (AWS). No human intervention required. TRIAL mode gives 50 free requests per wallet_address — each agent has its own independent quota. Context-aware sanitization: pass context field (legal/financial/medical/code/general) for domain-specific detection. Privacy Budget: operators configure daily limits once, agents operate autonomously. TrustBoost Score: GET /score/{wallet} for M2M trust verification. Anti-replay protection via Supabase PRIMARY KEY prevents tx_hash reuse. Proof of Sanitization: every paid sanitization is anchored on Solana via Helius. Verify at /verify/{anchor_tx}.",
+  "protocols": {
+    "MCP": {
+      "endpoint": "https://api.trustboost.dev/mcp",
+      "version": "2024-11-05"
+    },
+    "A2A": {
+      "conformant": true,
+      "agent_card": "https://api.trustboost.dev/.well-known/agent-card.json"
+    },
+    "ANP": {
+      "description": "https://api.trustboost.dev/.well-known/agent-description.json",
+      "did": "did:web:api.trustboost.dev"
+    },
+    "x402": {
+      "supported": true,
+      "network": "solana-mainnet",
+      "autonomous_payment": true
+    }
+  }
 }
