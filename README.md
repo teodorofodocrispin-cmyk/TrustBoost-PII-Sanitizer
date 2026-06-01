@@ -581,7 +581,7 @@ Use regex tools when sub-10ms latency is a hard requirement.
 
 ## Downloads
 
-[![Downloads](https://img.shields.io/badge/ClawHub-500%2B%20downloads-brightgreen)](https://clawhub.ai/teodorofodocrispin-cmyk/trustboost-pii-sanitizer)
+[![Downloads](https://img.shields.io/badge/ClawHub-600%2B%20downloads-brightgreen)](https://clawhub.ai/teodorofodocrispin-cmyk/trustboost-pii-sanitizer)
 
 [![Live Demo](https://img.shields.io/badge/🛡️%20Live%20Demo-Hugging%20Face-yellow)](https://huggingface.co/spaces/TrustBoost/pii-sanitizer)
 
