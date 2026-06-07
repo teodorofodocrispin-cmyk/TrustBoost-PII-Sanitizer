@@ -118,7 +118,7 @@ Every paid sanitization generates an immutable **Proof of Sanitization** on Sola
 | **Trial** | Free | 50/wallet | `tx_hash: "TRIAL"` |
 | **Paid** | 149 USDC | 10,000 sanitizations | Send USDC on Solana → retry with `tx_hash` |
 
-**Price per sanitization:** $0.0149 USDC — a rounding error compared to GDPR fines.
+**Unit cost:** $0.0149 USDC per sanitization — paid as a single bundle of 149 USDC = 10,000 sanitizations. One payment, no subscriptions, no recurring charges.
 
 **Payment address (Solana mainnet):**
 giu4VciTkfWJNG1oeP6SzHEJwmabikJSMB91GaFNWE4
