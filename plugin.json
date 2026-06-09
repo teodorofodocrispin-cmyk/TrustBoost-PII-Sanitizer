@@ -1,0 +1,21 @@
+{
+  "name": "trustboost-pii-sanitizer",
+  "version": "2.6.0",
+  "description": "Privacy firewall for autonomous AI agent pipelines. Sanitizes PII from text before it reaches LLMs. Context-aware redaction for legal, financial, medical, code, and general pipelines. x402 native — pay 149 USDC on Solana for 10,000 sanitizations. Proof of Sanitization anchored on-chain via Helius. 8 languages including LATAM (RFC/CUIT/CPF). EU AI Act compliant.",
+  "author": {
+    "name": "Teodoro Crispin",
+    "email": "teodorofodocrispin@gmail.com",
+    "url": "https://github.com/teodorofodocrispin-cmyk"
+  },
+  "license": "MIT",
+  "homepage": "https://api.trustboost.dev",
+  "repository": "https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer",
+  "skills": [
+    "skills/trustboost-pii-sanitizer"
+  ],
+  "mcpServers": {
+    "trustboost": {
+      "url": "https://api.trustboost.dev/mcp"
+    }
+  }
+}
