@@ -5,7 +5,7 @@
 [![Status: Active](https://img.shields.io/badge/Status-Active-brightgreen)]()
 [![Version: 2.6.0](https://img.shields.io/badge/Version-2.6.0-green)]()
 [![Languages: 8](https://img.shields.io/badge/Languages-8%20supported-orange)]()
-[![Downloads](https://img.shields.io/badge/ClawHub-600%2B%20downloads-brightgreen)](https://clawhub.ai/teodorofodocrispin-cmyk/trustboost-pii-sanitizer)
+[![Downloads](https://img.shields.io/badge/ClawHub-700%2B%20downloads-brightgreen)](https://clawhub.ai/teodorofodocrispin-cmyk/trustboost-pii-sanitizer)
 [![GitHub Stars](https://img.shields.io/github/stars/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer?style=social)](https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer)
 [![Listed on Glama](https://img.shields.io/badge/MCP-Glama%20Listed-blue)](https://glama.ai/mcp/servers/teodorofodocrispin-cmyk/trustboost-api)
 [![awesome-mcp-servers](https://img.shields.io/badge/awesome--mcp--servers-Security-red)](https://github.com/punkpeye/awesome-mcp-servers)
@@ -189,7 +189,7 @@ Full OpenAPI spec: [api.trustboost.dev/openapi.json](https://api.trustboost.dev/
 
 ## 📦 Downloads & Distribution
 
-[![Downloads](https://img.shields.io/badge/ClawHub-600%2B%20downloads-brightgreen)](https://clawhub.ai/teodorofodocrispin-cmyk/trustboost-pii-sanitizer)
+[![Downloads](https://img.shields.io/badge/ClawHub-700%2B%20downloads-brightgreen)](https://clawhub.ai/teodorofodocrispin-cmyk/trustboost-pii-sanitizer)
 [![Live Demo](https://img.shields.io/badge/🛡️%20Live%20Demo-Hugging%20Face-yellow)](https://huggingface.co/spaces/TrustBoost/pii-sanitizer)
 [![Listed on x402-list.com](https://img.shields.io/badge/x402--list-Listed-orange)](https://x402-list.com/services/trustboost-pii-sanitizer)
 [![Atelier Marketplace](https://img.shields.io/badge/Atelier-Live%20%24149-green)](https://atelierai.xyz/agents/trustboost)
