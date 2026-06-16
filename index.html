@@ -98,6 +98,18 @@
   .footer-links a:hover { color: var(--text2); text-decoration: none; }
   .footer-copy { font-family: var(--mono); font-size: 11px; color: var(--text3); }
 
+
+  @keyframes logo-pulse{0%,100%{filter:drop-shadow(0 0 8px rgba(0,212,170,0.5))}50%{filter:drop-shadow(0 0 16px rgba(0,212,170,0.9))}}
+  @keyframes hero-glow{0%,100%{filter:drop-shadow(0 0 24px rgba(0,212,170,0.5))}50%{filter:drop-shadow(0 0 40px rgba(0,212,170,0.9))}}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+  .hero h1 span{color:var(--accent);text-shadow:0 0 20px rgba(0,212,170,0.3);}
+  .btn-primary{box-shadow:0 0 20px rgba(0,212,170,0.25);}
+  .plan.featured{box-shadow:0 0 24px rgba(0,212,170,0.1);}
+  .hero-badge{box-shadow:0 0 12px rgba(0,212,170,0.15);}
+  .ctx-btn{padding:4px 12px;border-radius:20px;border:0.5px solid var(--border2);background:transparent;color:var(--text2);font-size:11px;font-family:var(--mono);cursor:pointer;transition:all 0.2s;}
+  .ctx-btn:hover,.ctx-btn.active{background:rgba(0,212,170,0.1);border-color:var(--accent);color:var(--accent);}
+  .ex-chip{font-size:11px;font-family:var(--mono);padding:4px 10px;border-radius:6px;background:var(--bg3);border:0.5px solid var(--border);color:var(--text3);cursor:pointer;transition:all 0.2s;}
+  .ex-chip:hover{border-color:var(--accent);color:var(--accent);}
   @media (max-width: 600px) {
     .nav-links { display: none; }
     .hero { padding: 2.5rem 0 2rem; }
@@ -111,12 +123,12 @@
 <nav>
   <div class="container">
     <div class="inner">
-      <span class="nav-logo">TrustBoost_</span>
+      <span class="nav-logo"><img src="https://github.com/user-attachments/assets/5ac2a5c4-9ad3-410d-abaa-788527bd4f73" alt="TB" style="width:28px;height:28px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(0,212,170,0.6));animation:logo-pulse 3s ease-in-out infinite;vertical-align:middle;margin-right:8px;">TrustBoost_</span>
       <div class="nav-links">
         <a href="https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer">GitHub</a>
         <a href="https://api.trustboost.dev/health">API Status</a>
         <a href="PRIVACY.md">Privacy</a>
-        <a href="https://huggingface.co/spaces/TrustBoost/pii-sanitizer" class="nav-pill">Try free</a>
+        <a href="#demo" class="nav-pill">Try free</a>
       </div>
     </div>
   </div>
@@ -124,11 +136,12 @@
 
 <section class="hero">
   <div class="container">
+    <div style="display:flex;justify-content:center;margin-bottom:1.5rem;"><img src="https://github.com/user-attachments/assets/5ac2a5c4-9ad3-410d-abaa-788527bd4f73" alt="TrustBoost" style="width:80px;height:80px;object-fit:contain;filter:drop-shadow(0 0 24px rgba(0,212,170,0.6));animation:hero-glow 3s ease-in-out infinite;"></div>
     <div class="hero-badge">v2.6.0 — live on Solana mainnet</div>
     <h1>Your AI agent is leaking<br><span>personal data.</span> Let's fix that.</h1>
     <p>TrustBoost sits between your agent and the LLM. It removes PII before it reaches the model — and proves it happened, on-chain, forever.</p>
     <div class="cta-row">
-      <a href="https://huggingface.co/spaces/TrustBoost/pii-sanitizer" class="btn-primary">Try free — no wallet needed</a>
+      <a href="#demo" class="btn-primary">Try free — no wallet needed</a>
       <a href="https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer" class="btn-secondary">View on GitHub</a>
     </div>
   </div>
@@ -145,6 +158,46 @@
     </div>
   </div>
 </div>
+
+<section class="section" id="demo">
+  <div class="container">
+    <div class="section-label">Live Demo — try it now</div>
+    <div style="background:var(--bg2);border:1px solid rgba(0,212,170,0.25);border-radius:var(--radius-lg);padding:1.5rem;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,212,170,0.6),transparent);"></div>
+      <div style="font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px;">
+        <span style="width:6px;height:6px;background:var(--accent);border-radius:50%;box-shadow:0 0 6px var(--accent);animation:blink 2s ease-in-out infinite;display:inline-block;"></span>
+        Real-time PII sanitization &middot; 3 free previews per IP &middot; no account needed
+      </div>
+      <div style="display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap;">
+        <button class="ctx-btn active" data-ctx="general" onclick="setCtx(this)">general</button>
+        <button class="ctx-btn" data-ctx="financial" onclick="setCtx(this)">financial</button>
+        <button class="ctx-btn" data-ctx="legal" onclick="setCtx(this)">legal</button>
+        <button class="ctx-btn" data-ctx="medical" onclick="setCtx(this)">medical</button>
+        <button class="ctx-btn" data-ctx="code" onclick="setCtx(this)">code</button>
+      </div>
+      <div style="display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap;">
+        <span class="ex-chip" onclick="setEx(this)" data-text="Contact John Smith at john@company.com, SSN 123-45-6789, phone +1-555-0100.">EN &mdash; SSN</span>
+        <span class="ex-chip" onclick="setEx(this)" data-text="RFC: LOPC850312AB3, CUIT 20-12345678-9, correo: maria@empresa.com.mx">ES &mdash; RFC</span>
+        <span class="ex-chip" onclick="setEx(this)" data-text="CPF: 123.456.789-09, CNPJ 12.345.678/0001-99, joao@empresa.com.br">PT &mdash; CPF</span>
+        <span class="ex-chip" onclick="setEx(this)" data-text="Personalausweis: L01X00T47, IBAN DE89370400440532013000">DE &mdash; Ausweis</span>
+        <span class="ex-chip" onclick="setEx(this)" data-text="const API_KEY = 'sk-proj-abc123xyz789'; // password: hunter2">Code</span>
+      </div>
+      <textarea id="demoInput" style="width:100%;min-height:90px;background:var(--bg3);border:0.5px solid var(--border);border-radius:var(--radius);padding:12px;color:var(--text);font-family:var(--mono);font-size:12px;line-height:1.6;resize:vertical;outline:none;margin-bottom:10px;" placeholder="Type or paste text with PII — emails, IDs, credentials..." onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+      <button id="demoBtn" onclick="runDemo()" style="width:100%;padding:11px;background:var(--accent);color:#000;border:none;border-radius:var(--radius);font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 0 16px rgba(0,212,170,0.25);">&#128737; Sanitize &mdash; Free Preview</button>
+      <div style="font-size:11px;color:var(--text3);text-align:center;margin-top:6px;">No account &middot; No wallet &middot; Ctrl+Enter to run</div>
+      <div id="demoLoading" style="display:none;text-align:center;padding:16px;color:var(--accent);font-family:var(--mono);font-size:13px;">Analyzing PII patterns &middot; &middot; &middot;</div>
+      <div id="demoError" style="display:none;margin-top:10px;padding:10px 14px;background:rgba(255,77,77,0.08);border:0.5px solid rgba(255,77,77,0.2);border-radius:var(--radius);color:rgba(255,120,120,0.9);font-size:13px;"></div>
+      <div id="demoResult" style="display:none;margin-top:14px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:6px;">
+          <span style="font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;">&check; Sanitized output</span>
+          <div style="display:flex;gap:6px;"><span id="riskBadge" style="padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;font-family:var(--mono);"></span><span id="scoreBadge" style="padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;font-family:var(--mono);background:rgba(0,212,170,0.1);color:var(--accent);border:0.5px solid rgba(0,212,170,0.25);"></span></div>
+        </div>
+        <div id="resultText" style="background:var(--bg3);border:0.5px solid rgba(0,212,170,0.2);border-radius:var(--radius);padding:12px;font-family:var(--mono);font-size:12px;line-height:1.7;color:var(--text);word-break:break-word;"></div>
+        <div id="entitiesRow" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;"></div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="section">
   <div class="container">
@@ -309,6 +362,38 @@ const now = new Date();
 const days = Math.ceil((target - now) / 864e5);
 const el = document.getElementById("days");
 el.innerHTML = (days > 0 ? days : 0) + "<span>days remaining</span>";
+
+var activeCtx='general';
+function setCtx(b){document.querySelectorAll('.ctx-btn').forEach(function(x){x.classList.remove('active')});b.classList.add('active');activeCtx=b.dataset.ctx;}
+function setEx(c){document.getElementById('demoInput').value=c.dataset.text;}
+document.addEventListener('DOMContentLoaded',function(){document.getElementById('demoInput').addEventListener('keydown',function(e){if(e.key==='Enter'&&e.ctrlKey)runDemo();});});
+function getRiskSt(c){var m={'CRITICAL':'background:rgba(255,77,77,0.15);color:#ff4d4d;border:0.5px solid rgba(255,77,77,0.3);','PRIVATE':'background:rgba(245,158,11,0.15);color:#f59e0b;border:0.5px solid rgba(245,158,11,0.3);','SENSITIVE':'background:rgba(0,212,170,0.15);color:var(--accent);border:0.5px solid rgba(0,212,170,0.3);','CLEAN':'background:rgba(85,102,119,0.15);color:#556677;border:0.5px solid rgba(255,255,255,0.08);'};return(m[c]||m['CLEAN'])+'padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;font-family:var(--mono);';}
+function hlRed(t){return t.replace(/\[REDACTED[^\]]*\]/g,function(m){return '<span style="background:rgba(0,212,170,0.15);border:0.5px solid rgba(0,212,170,0.35);color:var(--accent);border-radius:4px;padding:1px 5px;font-size:11px;font-weight:600;">'+m+'</span>';});}
+async function runDemo(){
+  var text=document.getElementById('demoInput').value.trim();
+  if(!text){document.getElementById('demoInput').focus();return;}
+  var btn=document.getElementById('demoBtn');btn.disabled=true;
+  document.getElementById('demoLoading').style.display='block';
+  document.getElementById('demoResult').style.display='none';
+  document.getElementById('demoError').style.display='none';
+  try{
+    var res=await fetch('https://api.trustboost.dev/sanitize/preview',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:text,context:activeCtx})});
+    var data=await res.json();
+    document.getElementById('demoLoading').style.display='none';
+    if(res.status===429){document.getElementById('demoError').innerHTML='⚠️ Free preview limit reached (3/IP). Use tx_hash: TRIAL for 50 free sanitizations — <a href="https://api.trustboost.dev" target="_blank" style="color:var(--accent)">api.trustboost.dev</a>';document.getElementById('demoError').style.display='block';btn.disabled=false;return;}
+    if(!res.ok)throw new Error(data.detail||'Error');
+    var s=(data.sanitized_content)||(data.data&&data.data.sanitized_content)||text;
+    var r=(data.risk_category)||(data.data&&data.data.risk_category)||'CLEAN';
+    var sc=data.safety_score!=null?data.safety_score:(data.data&&data.data.safety_score!=null?data.data.safety_score:0);
+    var ents=(data.entities)||(data.data&&data.data.entities)||[];
+    document.getElementById('resultText').innerHTML=hlRed(s);
+    document.getElementById('riskBadge').textContent=r;document.getElementById('riskBadge').setAttribute('style',getRiskSt(r));
+    document.getElementById('scoreBadge').textContent='Score: '+sc.toFixed(2);
+    document.getElementById('entitiesRow').innerHTML=ents.map(function(e){return '<span style="font-size:11px;font-family:var(--mono);padding:3px 8px;background:var(--bg3);border:0.5px solid var(--border);border-radius:6px;color:var(--text3);">'+(e.type||e.category||'entity')+'</span>';}).join('');
+    document.getElementById('demoResult').style.display='block';
+  }catch(err){document.getElementById('demoLoading').style.display='none';document.getElementById('demoError').textContent='Error: '+err.message;document.getElementById('demoError').style.display='block';}
+  btn.disabled=false;
+}
 </script>
 
 </body>
