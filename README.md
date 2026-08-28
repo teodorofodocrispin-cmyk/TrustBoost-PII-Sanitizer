@@ -101,10 +101,12 @@ curl -X POST https://api.trustboost.dev/sanitize \
 
 | What TrustBoost does | What TrustBoost never does |
 |---------------------|---------------------------|
-| Sanitizes text before it reaches LLMs | Store raw input text |
+| Sanitizes text before it reaches YOUR LLM | Store raw input text |
 | Returns structured entity list | Log PII values |
-| Anchors proof on Solana via Helius | Share data with third parties |
-| Logs sanitized output only (90 days) | Require personal accounts |
+| Anchors proof on Solana via Helius | Require personal accounts |
+| Logs sanitized output only (90 days) | Retain your raw text after the request completes |
+
+**Full disclosure on data transmission**: raw text is sent to Render (AWS) infrastructure and, for semantic detection, to OpenAI (GPT-4o-mini) — it is **not** processed locally. Neither TrustBoost nor OpenAI stores the raw text after the request completes; only the sanitized output and metadata are retained (see [PRIVACY.md](./PRIVACY.md)). **For strict no-transmission requirements** (e.g. on-premise HIPAA environments), this service is not suitable — use a local, regex/NER-based sanitizer instead.
 
 Every paid sanitization generates an immutable **Proof of Sanitization** on Solana — verifiable by anyone at `/verify/{anchor_tx}`.
 
